@@ -1,0 +1,24 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Zadnego Ale",
+        "description": "Set up Zadnego Ale integration.",
+        "data": {
+          "region": "Region"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot connect to Zadnego Ale API."
+    },
+    "abort": {
+      "already_configured": "Zadnego Ale integration for this region is already configured."
+    }
+  },
+  "system_health": {
+    "info": {
+      "can_reach_server": "Reach server"
+    }
+  }
+}

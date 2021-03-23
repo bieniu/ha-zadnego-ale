@@ -1,0 +1,24 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Żadnego Ale",
+        "description": "Konfiguracja integracji Żadnego Ale.",
+        "data": {
+          "region": "Region"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Nie można się połączyć z API Żadnego Ale"
+    },
+    "abort": {
+      "already_configured": "Integracja Żadnego Ale jest już skonfigurowana dla tego regionu."
+    }
+  },
+  "system_health": {
+    "info": {
+      "can_reach_server": "Dostęp do serwera"
+    }
+  }
+}
