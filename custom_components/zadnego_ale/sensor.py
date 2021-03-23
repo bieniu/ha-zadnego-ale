@@ -1,7 +1,7 @@
 """Support for the Zadnego Ale service."""
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import ATTR_ICON, DOMAIN, REGIONS, SENSORS
+from .const import DOMAIN, REGIONS, SENSORS
 
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
@@ -44,7 +44,7 @@ class ZadnegoAleSensor(CoordinatorEntity):
     @property
     def icon(self):
         """Return the icon."""
-        return SENSORS[self.sensor_type][ATTR_ICON]
+        return SENSORS[self.sensor_type]
 
     @property
     def unique_id(self):

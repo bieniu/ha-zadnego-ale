@@ -1,8 +1,6 @@
 """Constants for Zadnego Ale integration."""
 from datetime import timedelta
 
-ATTR_ICON = "icon"
-
 CONF_REGION = "region"
 
 DEFAULT_NAME = "Żadnego Ale"
@@ -22,23 +20,21 @@ REGIONS = (
 )
 
 SENSORS = {
-    "alternaria": {ATTR_ICON: None},
-    "ambrozja": {ATTR_ICON: None},
-    "babka": {ATTR_ICON: None},
-    "brzoza": {ATTR_ICON: None},
-    "bylica": {ATTR_ICON: None},
-    "cis": {ATTR_ICON: None},
-    "cladosporium": {
-        ATTR_ICON: "mdi:mushroom-outline",
-    },
-    "dąb": {ATTR_ICON: None},
-    "komosa": {ATTR_ICON: None},
-    "leszczyna": {ATTR_ICON: None},
-    "olsza": {ATTR_ICON: None},
-    "pokrzywa": {ATTR_ICON: None},
-    "szczaw": {ATTR_ICON: None},
-    "topola": {ATTR_ICON: None},
-    "trawy": {ATTR_ICON: None},
-    "wierzba": {ATTR_ICON: None},
-    "wiąz": {ATTR_ICON: None},
+    "alternaria": ("mdi:mushroom-outline"),
+    "ambrozja": ("mdi:sprout"),
+    "babka": ("mdi:sprout"),
+    "brzoza": ("mdi:tree"),
+    "bylica": ("mdi:sprout"),
+    "cis": ("mdi:tree"),
+    "cladosporium": ("mdi:mushroom-outline"),
+    "dąb": ("mdi:tree"),
+    "komosa": ("mdi:sprout"),
+    "leszczyna": ("mdi:tree"),
+    "olsza": ("mdi:tree"),
+    "pokrzywa": ("mdi:sprout"),
+    "szczaw": ("mdi:sprout"),
+    "topola": ("mdi:tree"),
+    "trawy": ("mdi:grass"),
+    "wierzba": ("mdi:tree"),
+    "wiąz": ("mdi:tree"),
 }
