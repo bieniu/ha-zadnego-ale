@@ -1,4 +1,4 @@
-"""Adds config flow for Żadnego Ale."""
+"""Adds config flow for Zadnego Ale."""
 from zadnegoale import ApiError, ZadnegoAle
 import async_timeout
 import voluptuous as vol
@@ -10,7 +10,7 @@ from .const import CONF_REGION, DOMAIN, REGIONS
 
 
 class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
-    """Config flow for Żadnego Ale."""
+    """Config flow for Zadnego Ale."""
 
     VERSION = 1
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
