@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  release_zip_file:
+    name: Prepare release asset
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v1
+      - name: ZIP files
+        run: |
+          cd /home/runner/work/ha-zadnego-ale/ha-zadnego-ale/custom_components/zadnego_ale
+          zip zadnego_ale.zip -r ./
+      - name: Upload zip to release
+        uses: svenstaro/upload-release-action@v1-release
+
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: /home/runner/work/ha-zadnego-ale/ha-zadnego-ale/custom_components/zadnego_ale/zadnego_ale.zip
+          asset_name: zadnego_ale.zip
+          tag: ${{ github.ref }}
+          overwrite: true

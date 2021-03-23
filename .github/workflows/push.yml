@@ -1,0 +1,31 @@
+name: Push
+
+on: [push, pull_request]
+
+jobs:
+  check:
+
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.7, 3.8, 3.9]
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v1
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Check with isort
+      run: |
+        pip install isort
+        isort custom_components/zadnego_ale --check-only
+    - name: Check with Black Code Formatter
+      run: |
+        pip install black
+        black custom_components/zadnego_ale --check
+    - name: Lint with flake8
+      run: |
+        pip install flake8
+        flake8 custom_components/zadnego_ale
