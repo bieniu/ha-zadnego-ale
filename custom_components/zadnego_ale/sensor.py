@@ -1,7 +1,8 @@
 """Support for the Zadnego Ale service."""
+from homeassistant.const import ATTR_ATTRIBUTION
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
-from .const import DOMAIN, REGIONS, SENSORS
+from .const import ATTRIBUTION, DOMAIN, REGIONS, SENSORS
 
 
 async def async_setup_entry(hass, config_entry, async_add_entities):
@@ -22,6 +23,7 @@ class ZadnegoAleSensor(CoordinatorEntity):
         """Initialize."""
         super().__init__(coordinator)
         self.sensor_type = sensor_type
+        self._attrs = {ATTR_ATTRIBUTION: ATTRIBUTION}
 
     @property
     def name(self):
@@ -36,10 +38,11 @@ class ZadnegoAleSensor(CoordinatorEntity):
     @property
     def device_state_attributes(self):
         """Return the state attributes."""
-        return {
-            attr: self.coordinator.data.get(self.sensor_type, {}).get(attr)
-            for attr in ["trend", "value"]
-        }
+        for attr in ["trend", "value"]:
+            self._attrs[attr] = self.coordinator.data.get(self.sensor_type, {}).get(
+                attr
+            )
+        return self._attrs
 
     @property
     def icon(self):

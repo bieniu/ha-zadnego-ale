@@ -1,6 +1,10 @@
 """Constants for Zadnego Ale integration."""
 from datetime import timedelta
 
+ATTRIBUTION = (
+    "Dane dostarczone przez Ośrodek Badania Alergenów Środowiskowych Sp. z o.o."
+)
+
 CONF_REGION = "region"
 
 DEFAULT_NAME = "Żadnego Ale"
