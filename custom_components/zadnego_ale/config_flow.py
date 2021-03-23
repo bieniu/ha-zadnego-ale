@@ -1,7 +1,7 @@
 """Adds config flow for Zadnego Ale."""
-from zadnegoale import ApiError, ZadnegoAle
 import async_timeout
 import voluptuous as vol
+from zadnegoale import ApiError, ZadnegoAle
 
 from homeassistant import config_entries
 from homeassistant.helpers.aiohttp_client import async_get_clientsession

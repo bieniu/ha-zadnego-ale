@@ -1,10 +1,10 @@
 """The Zadnego Ale component."""
 import asyncio
-from zadnegoale import ApiError, ZadnegoAle
 import logging
 
 from aiohttp.client_exceptions import ClientConnectorError
 from async_timeout import timeout
+from zadnegoale import ApiError, ZadnegoAle
 
 from homeassistant.core import Config, HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
