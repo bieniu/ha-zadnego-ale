@@ -1,12 +1,12 @@
 # Żadnego Ale
 
-![Validate with hassfest](https://github.com/bieniu/ha-zadnego-ale/workflows/Validate%20with%20hassfest/badge.svg)
+![Validate with hassfest](https://github.com/bieniu/ha-zadnego-ale//actions/workflows/hassfest.yml/badge.svg)
 [![GitHub Release][releases-shield]][releases]
 [![GitHub All Releases][downloads-total-shield]][releases]
 [![Buy me a coffee][buy-me-a-coffee-shield]][buy-me-a-coffee]
 [![PayPal_Me][paypal-me-shield]][paypal-me]
 
-The integration collects allergen concentration data from [Żadnego Ale](http://zadnegoale.pl) and presents it as sensors in the Home Assitant.
+The integration collects allergen concentration data from [Żadnego Ale](http://zadnegoale.pl) and presents it as sensors in the Home Assistant.
 You can add this to the Home Assistant via **Configuration** >> **Integrations** >> **Add integration** >> **Żadnego Ale**.
 
 [releases]: https://github.com/bieniu/ha-zadnego-ale/releases

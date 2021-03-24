@@ -1,7 +1,7 @@
 [![Buy me a coffee][buy-me-a-coffee-shield]][buy-me-a-coffee]  [![PayPal_Me][paypal-me-shield]][paypal-me]
 
 
-The integration collects allergen concentration data from [Żadnego Ale](http://zadnegoale.pl) and presents it as sensors in the Home Assitant.
+The integration collects allergen concentration data from [Żadnego Ale](http://zadnegoale.pl) and presents it as sensors in the Home Assistant.
 You can add this to the Home Assistant via **Configuration** >> **Integrations** >> **Add integration** >> **Żadnego Ale**.
 
 [buy-me-a-coffee-shield]: https://img.shields.io/static/v1.svg?label=%20&message=Buy%20me%20a%20coffee&color=6f4e37&logo=buy%20me%20a%20coffee&logoColor=white
