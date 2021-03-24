@@ -2,7 +2,10 @@
 
 
 The integration collects allergen concentration data from [Żadnego Ale](http://zadnegoale.pl) and presents it as sensors in the Home Assistant.
-You can add this to the Home Assistant via **Configuration** >> **Integrations** >> **Add integration** >> **Żadnego Ale**.
+
+To add this to the Home Assistant go to **Configuration** >> **Integrations** >> **Add integration** >> **Żadnego Ale** or use My Home Assistant link.
+
+[![Open your Home Assistant instance and start setting up a new integration.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=zadnego_ale)
 
 ![image](https://user-images.githubusercontent.com/478555/112283296-4a9a5000-8c88-11eb-9c9e-0e8b5982e389.png)
 
