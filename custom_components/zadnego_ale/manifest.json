@@ -4,7 +4,7 @@
   "documentation": "https://github.com/bieniu/ha-zadnego-ale",
   "dependencies": [],
   "codeowners": ["@bieniu"],
-  "requirements": ["git+https://github.com/bieniu/zadnegoale.git@main#zadnegoale==0.0.1"],
+  "requirements": ["zadnegoale==0.0.2"],
   "config_flow": true,
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
