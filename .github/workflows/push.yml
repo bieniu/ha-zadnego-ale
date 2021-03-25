@@ -17,23 +17,24 @@ jobs:
       uses: actions/setup-python@v1
       with:
         python-version: ${{ matrix.python-version }}
+    - name: Install requirements
+      run: |
+        pip install -r requirements-test.txt
     - name: Check with isort
       run: |
-        pip install isort
         isort custom_components/zadnego_ale tests --check-only
     - name: Check with Black Code Formatter
       run: |
-        pip install black
         black custom_components/zadnego_ale tests --check
     - name: Lint with flake8
       run: |
-        pip install flake8
         flake8 custom_components/zadnego_ale tests
     - name: Lint with pylint
       run: |
-        pip install pylint
-        pylint zadnegoale
+        pylint custom_components/zadnego_ale
+    - name: Test with mypy
+      run: |
+        mypy custom_components/zadnego_ale
     - name: Test with pytest
       run: |
-        pip install -r requirements-test.txt
         pytest tests --cov=custom_components/zadnego_ale --cov-report term-missing --disable-pytest-warnings
