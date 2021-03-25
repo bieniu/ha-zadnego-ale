@@ -29,6 +29,10 @@ jobs:
       run: |
         pip install flake8
         flake8 custom_components/zadnego_ale tests
+    - name: Lint with pylint
+      run: |
+        pip install pylint
+        pylint zadnegoale
     - name: Test with pytest
       run: |
         pip install -r requirements-test.txt

@@ -18,7 +18,9 @@ _LOGGER = logging.getLogger(__name__)
 PLATFORMS = ["sensor"]
 
 
-async def async_setup(hass: HomeAssistant, config: Config) -> bool:
+async def async_setup(  # pylint:disable=unused-argument
+    hass: HomeAssistant, config: Config
+) -> bool:
     """"Old way of setting up Zadnego Ale integrations."""
     return True
 

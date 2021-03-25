@@ -9,7 +9,7 @@ from zadnegoale import ApiError, ZadnegoAle
 from homeassistant import config_entries
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 
-from .const import CONF_REGION, DOMAIN, REGIONS
+from .const import CONF_REGION, DOMAIN, REGIONS  # pylint:disable=unused-import
 
 
 class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
