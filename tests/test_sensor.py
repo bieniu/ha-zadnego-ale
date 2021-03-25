@@ -1,3 +1,4 @@
+"""Test sensor of Zadnego Ale integration."""
 from pytest_homeassistant_custom_component.common import MockConfigEntry
 
 from custom_components.zadnego_ale.const import ATTRIBUTION, CONF_REGION, DOMAIN
