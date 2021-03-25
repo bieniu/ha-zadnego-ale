@@ -1,15 +1,23 @@
 """Global fixtures for zadnego_ale integration."""
-from unittest.mock import patch
+import json
+from unittest.mock import AsyncMock, patch
 
 import pytest
+from pytest_homeassistant_custom_component.common import load_fixture
 
 from custom_components.zadnego_ale import ApiError
+
 
 @pytest.mark.asyncio
 @pytest.fixture(name="bypass_get_data")
 def bypass_get_data_fixture():
     """Skip calls to get data from API."""
-    with patch("custom_components.zadnego_ale.ZadnegoAle.async_update"):
+    with patch(
+        "custom_components.zadnego_ale.ZadnegoAle._async_get_data",
+        return_value=AsyncMock(
+            return_value=json.loads(load_fixture("zadnego_ale_data.json"))
+        ),
+    ):
         yield
 
 
@@ -17,7 +25,7 @@ def bypass_get_data_fixture():
 def error_get_data_fixture():
     """Simulate error when retrieving data from API."""
     with patch(
-        "custom_components.zadnego_ale.ZadnegoAle.async_update",
+        "custom_components.zadnego_ale.ZadnegoAle._async_get_data",
         side_effect=ApiError("exception"),
     ):
         yield

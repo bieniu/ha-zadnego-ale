@@ -1,52 +1,194 @@
-{
-    "sensors": {
-        "cladosporium": {
-            "value": 5,
-            "trend": "bez zmian",
-            "level": "bardzo niskie"
+[
+    {
+        "id": 1723,
+        "startDate": {
+            "date": "2021-02-25 15:15:12.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
         },
-        "cis": {
-            "value": 1,
-            "trend": "wzrost",
-            "level": "brak"
+        "endDate": {
+            "date": "2021-03-31 15:15:12.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
         },
-        "leszczyna": {
-            "value": 5,
-            "trend": "silny spadek",
-            "level": "bardzo niskie"
+        "trend": "Bez zmian",
+        "level": "Bardzo niskie",
+        "value": 5,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
         },
-        "olsza": {
-            "value": 50,
-            "trend": "bez zmian",
-            "level": "wysokie"
-        },
-        "alternaria": {
-            "value": 1,
-            "trend": "bez zmian",
-            "level": "brak"
-        },
-        "topola": {
-            "value": 5,
-            "trend": "wzrost",
-            "level": "bardzo niskie"
-        },
-        "wiąz": {
-            "value": 1,
-            "trend": "bez zmian",
-            "level": "brak"
-        },
-        "wierzba": {
-            "value": 1,
-            "trend": "bez zmian",
-            "level": "brak"
-        },
-        "jesion": {
-            "value": 1,
-            "trend": "bez zmian",
-            "level": "brak"
+        "allergen": {
+            "id": 20,
+            "name": "Cladosporium"
         }
     },
-    "alerts": {
-        "value": "Pyli olsza, cis, topola."
+    {
+        "id": 1739,
+        "startDate": {
+            "date": "2021-03-20 00:39:37.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-03-31 00:39:37.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Wzrost",
+        "level": "Brak",
+        "value": 1,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 22,
+            "name": "Cis"
+        }
+    },
+    {
+        "id": 1742,
+        "startDate": {
+            "date": "2021-03-20 00:41:55.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-03-31 00:41:55.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Bez zmian",
+        "level": "Bardzo niskie",
+        "value": 5,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 43,
+            "name": "Leszczyna"
+        }
+    },
+    {
+        "id": 1744,
+        "startDate": {
+            "date": "2021-03-20 00:46:24.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-03-31 00:46:24.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Bez zmian",
+        "level": "Wysokie",
+        "value": 50,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 18,
+            "name": "Olsza"
+        }
+    },
+    {
+        "id": 1760,
+        "startDate": {
+            "date": "2021-02-25 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-04-02 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Bez zmian",
+        "level": "Brak",
+        "value": 1,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 23,
+            "name": "Alternaria"
+        }
+    },
+    {
+        "id": 1767,
+        "startDate": {
+            "date": "2021-03-14 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-04-29 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Wzrost",
+        "level": "Bardzo niskie",
+        "value": 5,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 19,
+            "name": "Topola"
+        }
+    },
+    {
+        "id": 1770,
+        "startDate": {
+            "date": "2021-03-14 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-04-06 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Bez zmian",
+        "level": "Brak",
+        "value": 1,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 28,
+            "name": "Wiąz"
+        }
+    },
+    {
+        "id": 1771,
+        "startDate": {
+            "date": "2021-03-14 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-04-13 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Bez zmian",
+        "level": "Brak",
+        "value": 1,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 24,
+            "name": "Wierzba"
+        }
     }
-}
+]

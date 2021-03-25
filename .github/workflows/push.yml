@@ -20,15 +20,15 @@ jobs:
     - name: Check with isort
       run: |
         pip install isort
-        isort custom_components/zadnego_ale --check-only
+        isort custom_components/zadnego_ale tests --check-only
     - name: Check with Black Code Formatter
       run: |
         pip install black
-        black custom_components/zadnego_ale --check
+        black custom_components/zadnego_ale tests --check
     - name: Lint with flake8
       run: |
         pip install flake8
-        flake8 custom_components/zadnego_ale
+        flake8 custom_components/zadnego_ale tests
     - name: Test with pytest
       run: |
         pip install -r requirements-test.txt
