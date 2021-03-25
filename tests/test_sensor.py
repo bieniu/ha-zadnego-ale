@@ -1,7 +1,8 @@
 from pytest_homeassistant_custom_component.common import MockConfigEntry
-from homeassistant.helpers import entity_registry as er
 
 from custom_components.zadnego_ale.const import ATTRIBUTION, CONF_REGION, DOMAIN
+from homeassistant.helpers import entity_registry as er
+
 
 async def test_sensor(hass, bypass_get_data):
     """Test sensor."""
