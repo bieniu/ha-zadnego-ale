@@ -1,0 +1,52 @@
+{
+    "sensors": {
+        "cladosporium": {
+            "value": 5,
+            "trend": "bez zmian",
+            "level": "bardzo niskie"
+        },
+        "cis": {
+            "value": 1,
+            "trend": "wzrost",
+            "level": "brak"
+        },
+        "leszczyna": {
+            "value": 5,
+            "trend": "silny spadek",
+            "level": "bardzo niskie"
+        },
+        "olsza": {
+            "value": 50,
+            "trend": "bez zmian",
+            "level": "wysokie"
+        },
+        "alternaria": {
+            "value": 1,
+            "trend": "bez zmian",
+            "level": "brak"
+        },
+        "topola": {
+            "value": 5,
+            "trend": "wzrost",
+            "level": "bardzo niskie"
+        },
+        "wiąz": {
+            "value": 1,
+            "trend": "bez zmian",
+            "level": "brak"
+        },
+        "wierzba": {
+            "value": 1,
+            "trend": "bez zmian",
+            "level": "brak"
+        },
+        "jesion": {
+            "value": 1,
+            "trend": "bez zmian",
+            "level": "brak"
+        }
+    },
+    "alerts": {
+        "value": "Pyli olsza, cis, topola."
+    }
+}

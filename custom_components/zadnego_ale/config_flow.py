@@ -1,4 +1,7 @@
 """Adds config flow for Zadnego Ale."""
+import asyncio
+
+from aiohttp.client_exceptions import ClientConnectorError
 import async_timeout
 import voluptuous as vol
 from zadnegoale import ApiError, ZadnegoAle
@@ -35,7 +38,7 @@ class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
                 )
                 with async_timeout.timeout(5):
                     await zadnegoale.async_update()
-            except ApiError:
+            except (ApiError, ClientConnectorError, asyncio.TimeoutError):
                 errors["base"] = "cannot_connect"
             else:
                 return self.async_create_entry(

@@ -29,3 +29,7 @@ jobs:
       run: |
         pip install flake8
         flake8 custom_components/zadnego_ale
+    - name: Test with pytest
+      run: |
+        pip install -r requirements-test.txt
+        pytest tests --cov=custom_components/zadnego_ale --cov-report term-missing --disable-pytest-warnings
