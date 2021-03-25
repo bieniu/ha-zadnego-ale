@@ -1,6 +1,6 @@
 # Żadnego Ale
 
-![Validate with hassfest](https://github.com/bieniu/ha-zadnego-ale/actions/workflows/hassfest.yml/badge.svg)
+[![Validate with hassfest](https://github.com/bieniu/ha-zadnego-ale/actions/workflows/hassfest.yml/badge.svg)](https://github.com/bieniu/ha-zadnego-ale/actions/workflows/hassfest.yml)
 [![GitHub Release][releases-shield]][releases]
 [![GitHub All Releases][downloads-total-shield]][releases]
 [![Buy me a coffee][buy-me-a-coffee-shield]][buy-me-a-coffee]
