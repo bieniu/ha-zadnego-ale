@@ -5,7 +5,7 @@ import pytest
 
 from custom_components.zadnego_ale import ApiError
 
-
+@pytest.mark.asyncio
 @pytest.fixture(name="bypass_get_data")
 def bypass_get_data_fixture():
     """Skip calls to get data from API."""
