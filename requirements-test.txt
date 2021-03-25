@@ -1,3 +1,4 @@
+aiohttp_cors
 pytest
 pytest-cov
 pytest-homeassistant-custom-component
