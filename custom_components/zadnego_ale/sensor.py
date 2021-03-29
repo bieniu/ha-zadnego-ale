@@ -14,7 +14,7 @@ from .const import ATTRIBUTION, DOMAIN, REGIONS, SENSORS
 
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: Callable
-):
+) -> None:
     """Add a Zadnego Ale entities from a config_entry."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
 
