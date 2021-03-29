@@ -64,7 +64,7 @@ class ZadnegoAleSensor(CoordinatorEntity):
         return f"{self.coordinator.region}-{self.sensor_type}"
 
     @property
-    def device_info(self) -> dict[str, Any]:
+    def device_info(self) -> dict:
         """Return the device info."""
         return {
             "identifiers": {(DOMAIN, self.coordinator.region)},
