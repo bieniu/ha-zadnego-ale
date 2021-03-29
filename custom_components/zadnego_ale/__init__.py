@@ -1,11 +1,13 @@
 """The Zadnego Ale component."""
 import asyncio
 import logging
+from typing import Any, Optional
 
 from aiohttp.client_exceptions import ClientConnectorError
 from async_timeout import timeout
 from zadnegoale import ApiError, ZadnegoAle
 
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import Config, HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
@@ -25,9 +27,9 @@ async def async_setup(  # pylint:disable=unused-argument
     return True
 
 
-async def async_setup_entry(hass, config_entry):
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Zadnego Ale as config entry."""
-    region = config_entry.data[CONF_REGION]
+    region = entry.data[CONF_REGION]
 
     websession = async_get_clientsession(hass)
 
@@ -38,29 +40,29 @@ async def async_setup_entry(hass, config_entry):
         raise ConfigEntryNotReady
 
     hass.data.setdefault(DOMAIN, {})
-    hass.data[DOMAIN][config_entry.entry_id] = coordinator
+    hass.data[DOMAIN][entry.entry_id] = coordinator
 
     for component in PLATFORMS:
         hass.async_create_task(
-            hass.config_entries.async_forward_entry_setup(config_entry, component)
+            hass.config_entries.async_forward_entry_setup(entry, component)
         )
 
     return True
 
 
-async def async_unload_entry(hass, config_entry):
+async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
     unload_ok = all(
         await asyncio.gather(
             *[
-                hass.config_entries.async_forward_entry_unload(config_entry, component)
+                hass.config_entries.async_forward_entry_unload(entry, component)
                 for component in PLATFORMS
             ]
         )
     )
 
     if unload_ok:
-        hass.data[DOMAIN].pop(config_entry.entry_id)
+        hass.data[DOMAIN].pop(entry.entry_id)
 
     return unload_ok
 
@@ -77,7 +79,7 @@ class ZadnegoAleDataUpdateCoordinator(DataUpdateCoordinator):
             hass, _LOGGER, name=DOMAIN, update_interval=DEFAULT_UPDATE_INTERVAL
         )
 
-    async def _async_update_data(self):
+    async def _async_update_data(self) -> Optional[Any]:
         """Update data via library."""
         try:
             with timeout(5):

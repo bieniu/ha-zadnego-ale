@@ -1,13 +1,22 @@
 """Support for the Zadnego Ale service."""
+from typing import Any, Callable, Optional
+
+from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
-from homeassistant.helpers.update_coordinator import CoordinatorEntity
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.update_coordinator import (
+    CoordinatorEntity,
+    DataUpdateCoordinator,
+)
 
 from .const import ATTRIBUTION, DOMAIN, REGIONS, SENSORS
 
 
-async def async_setup_entry(hass, config_entry, async_add_entities):
+async def async_setup_entry(
+    hass: HomeAssistant, entry: ConfigEntry, async_add_entities: Callable
+):
     """Add a Zadnego Ale entities from a config_entry."""
-    coordinator = hass.data[DOMAIN][config_entry.entry_id]
+    coordinator = hass.data[DOMAIN][entry.entry_id]
 
     sensors = []
     for sensor in SENSORS:
@@ -19,24 +28,24 @@ async def async_setup_entry(hass, config_entry, async_add_entities):
 class ZadnegoAleSensor(CoordinatorEntity):
     """Define an Zadnego Ale sensor."""
 
-    def __init__(self, coordinator, sensor_type):
+    def __init__(self, coordinator: DataUpdateCoordinator, sensor_type: str):
         """Initialize."""
         super().__init__(coordinator)
         self.sensor_type = sensor_type
         self._attrs = {ATTR_ATTRIBUTION: ATTRIBUTION}
 
     @property
-    def name(self):
+    def name(self) -> str:
         """Return the name."""
         return f"Stężenie {self.sensor_type.title()}"
 
     @property
-    def state(self):
+    def state(self) -> Optional[str]:
         """Return the state."""
         return self.coordinator.data.get(self.sensor_type, {}).get("level", "brak")
 
     @property
-    def device_state_attributes(self):
+    def device_state_attributes(self) -> dict[str, Any]:
         """Return the state attributes."""
         for attr in ["trend", "value"]:
             self._attrs[attr] = self.coordinator.data.get(self.sensor_type, {}).get(
@@ -45,17 +54,17 @@ class ZadnegoAleSensor(CoordinatorEntity):
         return self._attrs
 
     @property
-    def icon(self):
+    def icon(self) -> str:
         """Return the icon."""
         return SENSORS[self.sensor_type]
 
     @property
-    def unique_id(self):
+    def unique_id(self) -> str:
         """Return a unique_id for this entity."""
         return f"{self.coordinator.region}-{self.sensor_type}"
 
     @property
-    def device_info(self):
+    def device_info(self) -> dict[str, Any]:
         """Return the device info."""
         return {
             "identifiers": {(DOMAIN, self.coordinator.region)},

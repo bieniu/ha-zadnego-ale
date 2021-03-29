@@ -1,5 +1,6 @@
 """Adds config flow for Zadnego Ale."""
 import asyncio
+from typing import Any, Optional
 
 from aiohttp.client_exceptions import ClientConnectorError
 import async_timeout
@@ -22,7 +23,9 @@ class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         """Initialize."""
         self._errors = {}
 
-    async def async_step_user(self, user_input=None):
+    async def async_step_user(
+        self, user_input: Optional[dict[str, Any]] = None
+    ) -> dict[str, Any]:
         """Handle a flow initialized by the user."""
         errors = {}
 
