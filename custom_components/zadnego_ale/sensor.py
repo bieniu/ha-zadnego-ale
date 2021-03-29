@@ -1,5 +1,5 @@
 """Support for the Zadnego Ale service."""
-from typing import Any, Callable, Optional
+from typing import Callable, Optional
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
