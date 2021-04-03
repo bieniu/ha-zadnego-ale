@@ -45,7 +45,7 @@ class ZadnegoAleSensor(CoordinatorEntity):
         return getattr(self.coordinator.data, self.sensor_type, {}).get("level", "brak")
 
     @property
-    def device_state_attributes(self) -> dict:
+    def extra_state_attributes(self) -> dict:
         """Return the state attributes."""
         for attr in ["trend", "value"]:
             self._attrs[attr] = getattr(
