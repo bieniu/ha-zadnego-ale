@@ -32,6 +32,7 @@ SENSORS = {
     "cis": ("mdi:tree"),
     "cladosporium": ("mdi:mushroom-outline"),
     "dąb": ("mdi:tree"),
+    "jesion": ("mdi:tree"),
     "komosa": ("mdi:sprout"),
     "leszczyna": ("mdi:tree"),
     "olsza": ("mdi:tree"),
