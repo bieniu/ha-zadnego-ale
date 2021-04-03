@@ -42,15 +42,15 @@ class ZadnegoAleSensor(CoordinatorEntity):
     @property
     def state(self) -> Optional[str]:
         """Return the state."""
-        return self.coordinator.data.get(self.sensor_type, {}).get("level", "brak")
+        return getattr(self.coordinator.data, self.sensor_type, {}).get("level", "brak")
 
     @property
     def device_state_attributes(self) -> dict:
         """Return the state attributes."""
         for attr in ["trend", "value"]:
-            self._attrs[attr] = self.coordinator.data.get(self.sensor_type, {}).get(
-                attr
-            )
+            self._attrs[attr] = getattr(
+                self.coordinator.data, self.sensor_type, {}
+            ).get(attr)
         return self._attrs
 
     @property

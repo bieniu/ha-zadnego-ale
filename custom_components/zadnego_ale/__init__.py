@@ -87,4 +87,4 @@ class ZadnegoAleDataUpdateCoordinator(DataUpdateCoordinator):
         except (ApiError, ClientConnectorError) as error:
             raise UpdateFailed(error) from error
 
-        return data["sensors"]
+        return data.sensors
