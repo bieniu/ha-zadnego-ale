@@ -1,7 +1,7 @@
 {
   "name": "Żadnego Ale",
   "homeassistant": "2021.2.0",
-  "iot_class": "cloud_poll",
+  "iot_class": "Cloud Polling",
   "domains": ["sensor"],
   "zip_release": true,
   "filename": "zadnego_ale.zip",
