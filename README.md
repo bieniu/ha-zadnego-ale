@@ -6,7 +6,7 @@
 [![Buy me a coffee][buy-me-a-coffee-shield]][buy-me-a-coffee]
 [![PayPal_Me][paypal-me-shield]][paypal-me]
 
-The integration collects allergen concentration data from [Żadnego Ale](http://zadnegoale.pl) and presents it as sensors in the Home Assistant.
+The integration collects allergen concentration data from [Żadnego Ale](http://zadnegoale.pl) for Poland and presents it as sensors in the Home Assistant.
 
 You can install this integration manually or add this repository as custom to [HACS](https://hacs.xyz).
 
