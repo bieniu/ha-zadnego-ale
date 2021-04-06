@@ -4,7 +4,7 @@ import logging
 from typing import Any, Optional
 
 from aiohttp.client_exceptions import ClientConnectorError
-from async_timeout import timeout
+import async_timeout
 from zadnegoale import ApiError, ZadnegoAle
 
 from homeassistant.config_entries import ConfigEntry
@@ -82,7 +82,7 @@ class ZadnegoAleDataUpdateCoordinator(DataUpdateCoordinator):
     async def _async_update_data(self) -> Optional[Any]:
         """Update data via library."""
         try:
-            with timeout(5):
+            with async_timeout.timeout(10):
                 data = await self.zadnegoale.async_update()
         except (ApiError, ClientConnectorError) as error:
             raise UpdateFailed(error) from error
