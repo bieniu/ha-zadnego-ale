@@ -73,7 +73,7 @@ class ZadnegoAleDataUpdateCoordinator(DataUpdateCoordinator):
     def __init__(self, hass, session, region):
         """Initialize."""
         self.region = region
-        self.zadnegoale = ZadnegoAle(session, region)
+        self.zadnegoale = ZadnegoAle(session, region, debug=True)
 
         super().__init__(
             hass, _LOGGER, name=DOMAIN, update_interval=DEFAULT_UPDATE_INTERVAL
