@@ -18,10 +18,7 @@ async def test_create_entry(hass, bypass_get_data):
     assert result["step_id"] == SOURCE_USER
     assert result["errors"] == {}
 
-    with patch("custom_components.zadnego_ale.async_setup", return_value=True), patch(
-        "custom_components.zadnego_ale.async_setup_entry", return_value=True
-    ):
-
+    with patch("custom_components.zadnego_ale.async_setup_entry", return_value=True):
         result = await hass.config_entries.flow.async_configure(
             result["flow_id"], user_input=USER_INPUT
         )
