@@ -1,6 +1,7 @@
 """Support for the Zadnego Ale service."""
 from typing import Callable, Optional
 
+from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
 from homeassistant.core import HomeAssistant
@@ -25,7 +26,7 @@ async def async_setup_entry(
     async_add_entities(sensors, False)
 
 
-class ZadnegoAleSensor(CoordinatorEntity):
+class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     """Define an Zadnego Ale sensor."""
 
     def __init__(self, coordinator: DataUpdateCoordinator, sensor_type: str):
@@ -45,7 +46,7 @@ class ZadnegoAleSensor(CoordinatorEntity):
         return getattr(self.coordinator.data, self.sensor_type, {}).get("level", "brak")
 
     @property
-    def device_state_attributes(self) -> dict:
+    def extra_state_attributes(self) -> dict:
         """Return the state attributes."""
         for attr in ["trend", "value"]:
             self._attrs[attr] = getattr(

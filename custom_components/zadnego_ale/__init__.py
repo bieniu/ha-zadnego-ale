@@ -8,7 +8,7 @@ import async_timeout
 from zadnegoale import ApiError, ZadnegoAle
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.core import Config, HomeAssistant
+from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryNotReady
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
@@ -18,13 +18,6 @@ from .const import CONF_REGION, DEFAULT_UPDATE_INTERVAL, DOMAIN
 _LOGGER = logging.getLogger(__name__)
 
 PLATFORMS = ["sensor"]
-
-
-async def async_setup(  # pylint:disable=unused-argument
-    hass: HomeAssistant, config: Config
-) -> bool:
-    """"Old way of setting up Zadnego Ale integrations."""
-    return True
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
