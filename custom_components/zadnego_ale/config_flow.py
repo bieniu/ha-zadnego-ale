@@ -1,6 +1,7 @@
 """Adds config flow for Zadnego Ale."""
+from __future__ import annotations
+
 import asyncio
-from typing import Optional
 
 from aiohttp.client_exceptions import ClientConnectorError
 import async_timeout
@@ -9,6 +10,7 @@ from zadnegoale import ApiError, ZadnegoAle
 
 from homeassistant import config_entries
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.helpers.typing import ConfigType
 
 from .const import CONF_REGION, DOMAIN, REGIONS  # pylint:disable=unused-import
 
@@ -23,7 +25,7 @@ class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
         """Initialize."""
         self._errors = {}
 
-    async def async_step_user(self, user_input: Optional[dict] = None) -> dict:
+    async def async_step_user(self, user_input: ConfigType | None = None):
         """Handle a flow initialized by the user."""
         errors = {}
 

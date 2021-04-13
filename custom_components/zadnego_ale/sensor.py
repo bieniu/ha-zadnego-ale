@@ -1,10 +1,12 @@
 """Support for the Zadnego Ale service."""
-from typing import Callable, Optional
+from __future__ import annotations
+
+from typing import Callable
 
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
-from homeassistant.core import HomeAssistant
+from homeassistant.helpers.typing import HomeAssistantType
 from homeassistant.helpers.update_coordinator import (
     CoordinatorEntity,
     DataUpdateCoordinator,
@@ -14,7 +16,7 @@ from .const import ATTRIBUTION, DOMAIN, REGIONS, SENSORS
 
 
 async def async_setup_entry(
-    hass: HomeAssistant, entry: ConfigEntry, async_add_entities: Callable
+    hass: HomeAssistantType, entry: ConfigEntry, async_add_entities: Callable
 ) -> None:
     """Add a Zadnego Ale entities from a config_entry."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
@@ -41,8 +43,7 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         return f"Stężenie {self.sensor_type.title()}"
 
     @property
-    def state(self) -> Optional[str]:
-        """Return the state."""
+    def state(self) -> str | None:
         return getattr(self.coordinator.data, self.sensor_type, {}).get("level", "brak")
 
     @property
