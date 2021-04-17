@@ -11,8 +11,8 @@ import async_timeout
 from zadnegoale import ApiError, ZadnegoAle
 
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
-from homeassistant.helpers.typing import HomeAssistantType
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import CONF_REGION, DEFAULT_UPDATE_INTERVAL, DOMAIN
@@ -22,7 +22,7 @@ _LOGGER = logging.getLogger(__name__)
 PLATFORMS = ["sensor"]
 
 
-async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool:
+async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Zadnego Ale as config entry."""
     region = entry.data[CONF_REGION]
 
@@ -42,7 +42,7 @@ async def async_setup_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool
     return True
 
 
-async def async_unload_entry(hass: HomeAssistantType, entry: ConfigEntry) -> bool:
+async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Unload a config entry."""
     unload_ok = all(
         await asyncio.gather(
@@ -62,7 +62,7 @@ async def async_unload_entry(hass: HomeAssistantType, entry: ConfigEntry) -> boo
 class ZadnegoAleDataUpdateCoordinator(DataUpdateCoordinator):
     """Class to manage fetching ZadnegoAle data API."""
 
-    def __init__(self, hass: HomeAssistantType, session: ClientSession, region: int):
+    def __init__(self, hass: HomeAssistant, session: ClientSession, region: int):
         """Initialize."""
         self.region = region
         self.zadnegoale = ZadnegoAle(session, region, debug=True)

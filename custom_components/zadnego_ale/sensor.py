@@ -6,7 +6,7 @@ from typing import Callable
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
-from homeassistant.helpers.typing import HomeAssistantType
+from homeassistant.core import HomeAssistant
 from homeassistant.helpers.update_coordinator import (
     CoordinatorEntity,
     DataUpdateCoordinator,
@@ -16,7 +16,7 @@ from .const import ATTRIBUTION, DOMAIN, REGIONS, SENSORS
 
 
 async def async_setup_entry(
-    hass: HomeAssistantType, entry: ConfigEntry, async_add_entities: Callable
+    hass: HomeAssistant, entry: ConfigEntry, async_add_entities: Callable
 ) -> None:
     """Add a Zadnego Ale entities from a config_entry."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
