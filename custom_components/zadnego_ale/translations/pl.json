@@ -1,8 +1,8 @@
 {
   "config": {
+    "flow_title": "{name}",
     "step": {
       "user": {
-        "title": "Żadnego Ale",
         "description": "Konfiguracja integracji Żadnego Ale.",
         "data": {
           "region": "Region"

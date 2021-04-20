@@ -1,8 +1,8 @@
 {
   "config": {
+    "flow_title": "{name}",
     "step": {
       "user": {
-        "title": "Zadnego Ale",
         "description": "Set up Zadnego Ale integration.",
         "data": {
           "region": "Region"
