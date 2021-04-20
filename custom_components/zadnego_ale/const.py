@@ -38,7 +38,7 @@ SENSORS = {
     "komosa": ("mdi:sprout"),
     "leszczyna": ("mdi:tree"),
     "olsza": ("mdi:tree"),
-    "planat": ("mdi:tree"),
+    "platan": ("mdi:tree"),
     "pokrzywa": ("mdi:sprout"),
     "szczaw": ("mdi:sprout"),
     "topola": ("mdi:tree"),
