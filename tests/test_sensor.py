@@ -55,3 +55,45 @@ async def test_sensor(hass, bypass_get_data):
 
     assert entry
     assert entry.unique_id == "2-trawy"
+
+    state = hass.states.get("sensor.stezenie_platan")
+
+    assert state
+    assert state.state == "brak"
+    assert state.attributes.get("attribution") == ATTRIBUTION
+    assert state.attributes.get("trend") == "wzrost"
+    assert state.attributes.get("value") == 1
+    assert state.attributes.get("icon") == "mdi:tree"
+
+    entry = registry.async_get("sensor.stezenie_platan")
+
+    assert entry
+    assert entry.unique_id == "2-platan"
+
+    state = hass.states.get("sensor.stezenie_klon")
+
+    assert state
+    assert state.state == "bardzo niskie"
+    assert state.attributes.get("attribution") == ATTRIBUTION
+    assert state.attributes.get("trend") == "bez zmian"
+    assert state.attributes.get("value") == 5
+    assert state.attributes.get("icon") == "mdi:tree"
+
+    entry = registry.async_get("sensor.stezenie_klon")
+
+    assert entry
+    assert entry.unique_id == "2-klon"
+
+    state = hass.states.get("sensor.stezenie_grab")
+
+    assert state
+    assert state.state == "średnie"
+    assert state.attributes.get("attribution") == ATTRIBUTION
+    assert state.attributes.get("trend") == "wzrost"
+    assert state.attributes.get("value") == 20
+    assert state.attributes.get("icon") == "mdi:tree"
+
+    entry = registry.async_get("sensor.stezenie_grab")
+
+    assert entry
+    assert entry.unique_id == "2-grab"

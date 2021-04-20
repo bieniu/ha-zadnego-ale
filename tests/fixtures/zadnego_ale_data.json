@@ -190,5 +190,125 @@
             "id": 24,
             "name": "Wierzba"
         }
+    },
+    {
+        "id": 1826,
+        "startDate": {
+            "date": "2021-03-14 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-04-13 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Wzrost",
+        "level": "Brak",
+        "value": 1,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 33,
+            "name": "Platan"
+        }
+    },
+    {
+        "id": 1826,
+        "startDate": {
+            "date": "2021-03-14 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-04-13 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Bez zmian",
+        "level": "Bardzo niskie",
+        "value": 5,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 27,
+            "name": "Klon"
+        }
+    },
+    {
+        "id": 1826,
+        "startDate": {
+            "date": "2021-03-14 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-04-13 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Wzrost",
+        "level": "średnie",
+        "value": 20,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 21,
+            "name": "Grab"
+        }
+    },
+    {
+        "id": 1826,
+        "startDate": {
+            "date": "2021-03-14 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-04-13 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Wzrost",
+        "level": "Bardzo niskie",
+        "value": 5,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 29,
+            "name": "Dąb"
+        }
+    },
+    {
+        "id": 1826,
+        "startDate": {
+            "date": "2021-03-14 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "endDate": {
+            "date": "2021-04-13 00:00:00.000000",
+            "timezone_type": 3,
+            "timezone": "Europe/Warsaw"
+        },
+        "trend": "Spadek",
+        "level": "Bardzo wysokie",
+        "value": 100,
+        "region": {
+            "id": 9,
+            "name": "Karpaty"
+        },
+        "allergen": {
+            "id": 26,
+            "name": "Jesion"
+        }
     }
 ]
