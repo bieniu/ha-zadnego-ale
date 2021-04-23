@@ -10,7 +10,7 @@
       }
     },
     "error": {
-      "cannot_connect": "Nie można się połączyć z API Żadnego Ale"
+      "cannot_connect": "Nie można połączyć się z API Żadnego Ale"
     },
     "abort": {
       "already_configured": "Integracja Żadnego Ale jest już skonfigurowana dla tego regionu."
