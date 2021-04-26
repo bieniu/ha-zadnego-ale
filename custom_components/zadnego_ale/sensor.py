@@ -1,24 +1,26 @@
 """Support for the Zadnego Ale service."""
 from __future__ import annotations
 
-from typing import Callable
+from typing import Any, Callable
 
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.update_coordinator import (
-    CoordinatorEntity,
-    DataUpdateCoordinator,
-)
+from homeassistant.helpers.entity import Entity
+from homeassistant.helpers.typing import StateType
+from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
+from . import ZadnegoAleDataUpdateCoordinator
 from .const import ATTRIBUTION, DOMAIN, REGIONS, SENSORS
 
 PARALLEL_UPDATES = 1
 
 
 async def async_setup_entry(
-    hass: HomeAssistant, entry: ConfigEntry, async_add_entities: Callable
+    hass: HomeAssistant,
+    entry: ConfigEntry,
+    async_add_entities: Callable[[list[Entity], bool], None],
 ) -> None:
     """Add a Zadnego Ale entities from a config_entry."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
@@ -33,7 +35,7 @@ async def async_setup_entry(
 class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     """Define an Zadnego Ale sensor."""
 
-    def __init__(self, coordinator: DataUpdateCoordinator, sensor_type: str):
+    def __init__(self, coordinator: ZadnegoAleDataUpdateCoordinator, sensor_type: str):
         """Initialize."""
         super().__init__(coordinator)
         self.sensor_type = sensor_type
@@ -45,11 +47,11 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         return f"Stężenie {self.sensor_type.title()}"
 
     @property
-    def state(self) -> str | None:
+    def state(self) -> StateType:
         return getattr(self.coordinator.data, self.sensor_type, {}).get("level", "brak")
 
     @property
-    def extra_state_attributes(self) -> dict:
+    def extra_state_attributes(self) -> dict[str, Any]:
         """Return the state attributes."""
         for attr in ["trend", "value"]:
             self._attrs[attr] = getattr(
@@ -68,7 +70,7 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         return f"{self.coordinator.region}-{self.sensor_type}"
 
     @property
-    def device_info(self) -> dict:
+    def device_info(self) -> dict[str, Any]:
         """Return the device info."""
         return {
             "identifiers": {(DOMAIN, self.coordinator.region)},

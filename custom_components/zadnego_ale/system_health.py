@@ -12,7 +12,7 @@ def async_register(  # pylint:disable=unused-argument
     register.async_register_info(system_health_info)
 
 
-async def system_health_info(hass: HomeAssistant) -> dict:
+async def system_health_info(hass: HomeAssistant) -> dict[str, str]:
     """Get info for the info page."""
     return {
         "can_reach_server": system_health.async_check_can_reach_url(
