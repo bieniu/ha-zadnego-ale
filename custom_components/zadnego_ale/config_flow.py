@@ -9,6 +9,7 @@ import voluptuous as vol
 from zadnegoale import ApiError, ZadnegoAle
 
 from homeassistant import config_entries
+from homeassistant.data_entry_flow import FlowResultDict
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.typing import ConfigType
 
@@ -21,7 +22,9 @@ class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
     VERSION = 1
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
 
-    async def async_step_user(self, user_input: ConfigType | None = None):
+    async def async_step_user(
+        self, user_input: ConfigType | None = None
+    ) -> FlowResultDict:
         """Handle a flow initialized by the user."""
         errors = {}
 
