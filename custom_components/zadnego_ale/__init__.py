@@ -8,7 +8,7 @@ from typing import Any
 from aiohttp import ClientSession
 from aiohttp.client_exceptions import ClientConnectorError
 import async_timeout
-from zadnegoale import ApiError, ZadnegoAle
+from zadnegoale import ApiError, DictToObj, ZadnegoAle
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -71,7 +71,7 @@ class ZadnegoAleDataUpdateCoordinator(DataUpdateCoordinator):
             hass, _LOGGER, name=DOMAIN, update_interval=DEFAULT_UPDATE_INTERVAL
         )
 
-    async def _async_update_data(self) -> dict[str, Any]:
+    async def _async_update_data(self) -> DictToObj:
         """Update data via library."""
         try:
             with async_timeout.timeout(10):
