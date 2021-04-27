@@ -35,7 +35,9 @@ async def async_setup_entry(
 class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     """Define an Zadnego Ale sensor."""
 
-    def __init__(self, coordinator: ZadnegoAleDataUpdateCoordinator, sensor_type: str):
+    def __init__(
+        self, coordinator: ZadnegoAleDataUpdateCoordinator, sensor_type: str
+    ) -> None:
         """Initialize."""
         super().__init__(coordinator)
         self.sensor_type = sensor_type

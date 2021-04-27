@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+from typing import Any
 
 from aiohttp.client_exceptions import ClientConnectorError
 import async_timeout
@@ -16,7 +17,7 @@ from homeassistant.helpers.typing import ConfigType
 from .const import CONF_REGION, DOMAIN, REGIONS  # pylint:disable=unused-import
 
 
-class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):
+class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):  # type: ignore[call-arg]
     """Config flow for Zadnego Ale."""
 
     VERSION = 1
