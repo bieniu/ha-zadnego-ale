@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import logging
+from typing import cast
 
 from aiohttp import ClientSession
 from aiohttp.client_exceptions import ClientConnectorError
@@ -44,7 +45,7 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     if unload_ok:
         hass.data[DOMAIN].pop(entry.entry_id)
 
-    return unload_ok
+    return cast(bool, unload_ok)
 
 
 class ZadnegoAleDataUpdateCoordinator(DataUpdateCoordinator):
