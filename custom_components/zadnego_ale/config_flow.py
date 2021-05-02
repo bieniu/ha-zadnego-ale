@@ -31,7 +31,9 @@ class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):  # type: 
         websession = async_get_clientsession(self.hass)
 
         if user_input is not None:
-            await self.async_set_unique_id(REGIONS.index(user_input[CONF_REGION]) + 1)
+            await self.async_set_unique_id(
+                str(REGIONS.index(user_input[CONF_REGION]) + 1)
+            )
             self._abort_if_unique_id_configured()
 
             try:

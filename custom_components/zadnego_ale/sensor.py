@@ -78,7 +78,7 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     def device_info(self) -> DeviceInfo:
         """Return the device info."""
         return {
-            "identifiers": {(DOMAIN, self.coordinator.region)},
+            "identifiers": {(DOMAIN, str(self.coordinator.region))},
             "name": REGIONS[self.coordinator.region - 1],
             "manufacturer": "Żadnego Ale",
             "entry_type": "service",

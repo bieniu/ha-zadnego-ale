@@ -12,6 +12,7 @@ from zadnegoale import ApiError, DictToObj, ZadnegoAle
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.helpers.device_registry import async_get_registry
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import CONF_REGION, DEFAULT_UPDATE_INTERVAL, DOMAIN
@@ -24,6 +25,18 @@ PLATFORMS = ["sensor"]
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Zadnego Ale as config entry."""
     region = entry.data[CONF_REGION]
+
+    # Migrate unique_id from int to str
+    if isinstance(entry.unique_id, int):
+        hass.config_entries.async_update_entry(entry, unique_id=str(region))
+
+    # Migrate device_info identifiers from int to str
+    device_registry = await async_get_registry(hass)
+    old_ids = (DOMAIN, region)
+    device_entry = device_registry.async_get_device({old_ids})
+    if device_entry and entry.entry_id in device_entry.config_entries:
+        new_ids = (DOMAIN, str(region))
+        device_registry.async_update_device(device_entry.id, new_identifiers={new_ids})
 
     websession = async_get_clientsession(hass)
 
