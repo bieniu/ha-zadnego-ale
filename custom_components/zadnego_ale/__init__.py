@@ -51,7 +51,9 @@ async def async_unload_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
 class ZadnegoAleDataUpdateCoordinator(DataUpdateCoordinator):
     """Class to manage fetching ZadnegoAle data API."""
 
-    def __init__(self, hass: HomeAssistant, session: ClientSession, region: int):
+    def __init__(
+        self, hass: HomeAssistant, session: ClientSession, region: int
+    ) -> None:
         """Initialize."""
         self.region = region
         self.zadnegoale = ZadnegoAle(session, region, debug=True)

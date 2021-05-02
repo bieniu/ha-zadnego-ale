@@ -1,17 +1,20 @@
 """Constants for Zadnego Ale integration."""
-from datetime import timedelta
+from __future__ import annotations
 
-ATTRIBUTION = (
+from datetime import timedelta
+from typing import Final
+
+ATTRIBUTION: Final = (
     "Dane dostarczone przez Ośrodek Badania Alergenów Środowiskowych Sp. z o.o."
 )
 
-CONF_REGION = "region"
+CONF_REGION: Final = "region"
 
-DEFAULT_NAME = "Żadnego Ale"
+DEFAULT_NAME: Final = "Żadnego Ale"
 DEFAULT_UPDATE_INTERVAL = timedelta(minutes=60)
-DOMAIN = "zadnego_ale"
+DOMAIN: Final = "zadnego_ale"
 
-REGIONS = (
+REGIONS: Final[tuple[str, ...]] = (
     "Wybrzeże",
     "Pomorze",
     "Warmia, Mazury i Podlasie",
@@ -23,7 +26,7 @@ REGIONS = (
     "Karpaty",
 )
 
-SENSORS = {
+SENSORS: Final[dict[str, str]] = {
     "alternaria": "mdi:mushroom-outline",
     "ambrozja": "mdi:sprout",
     "babka": "mdi:sprout",
