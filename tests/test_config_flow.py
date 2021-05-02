@@ -1,6 +1,8 @@
 """Define tests for the Zadnego Ale config flow."""
 from unittest.mock import patch
 
+from pytest_homeassistant_custom_component.common import MockConfigEntry
+
 from custom_components.zadnego_ale.const import CONF_REGION, DOMAIN
 from homeassistant.config_entries import SOURCE_USER
 from homeassistant.data_entry_flow import RESULT_TYPE_CREATE_ENTRY, RESULT_TYPE_FORM
@@ -26,6 +28,20 @@ async def test_create_entry(hass, bypass_get_data):
         assert result["type"] == RESULT_TYPE_CREATE_ENTRY
         assert result["title"] == "Pomorze"
         assert result["data"][CONF_REGION] == 2
+        assert result["unique_id"] == "2"
+
+
+async def test_duplicate_error(hass, bypass_get_data):
+    """Test that errors are shown when duplicates are added."""
+    entry = MockConfigEntry(domain=DOMAIN, unique_id="2", data={CONF_REGION: 2})
+    entry.add_to_hass(hass)
+
+    result = await hass.config_entries.flow.async_init(
+        DOMAIN, context={"source": SOURCE_USER}
+    )
+
+    assert result["type"] == "abort"
+    assert result["reason"] == "already_configured"
 
 
 async def test_failed_config_flow(hass, error_on_get_data):
