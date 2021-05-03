@@ -1,5 +1,8 @@
 """Test init of Zadnego Ale integration."""
-from pytest_homeassistant_custom_component.common import MockConfigEntry, mock_device_registry
+from pytest_homeassistant_custom_component.common import (
+    MockConfigEntry,
+    mock_device_registry,
+)
 
 from custom_components.zadnego_ale.const import CONF_REGION, DOMAIN
 from homeassistant.config_entries import (
