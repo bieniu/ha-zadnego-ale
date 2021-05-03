@@ -1,12 +1,15 @@
 """Support for the Zadnego Ale service."""
 from __future__ import annotations
 
-from typing import Any, Callable, cast
+from typing import Any, cast
+from typing import Any
 
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import ZadnegoAleDataUpdateCoordinator
@@ -18,7 +21,7 @@ PARALLEL_UPDATES = 1
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: ConfigEntry,
-    async_add_entities: Callable,
+    async_add_entities: AddEntitiesCallback,
 ) -> None:
     """Add a Zadnego Ale entities from a config_entry."""
     coordinator: ZadnegoAleDataUpdateCoordinator = hass.data[DOMAIN][entry.entry_id]
@@ -77,7 +80,7 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     @property
     def device_info(
         self,
-    ) -> dict[str, Any]:
+    ) -> DeviceInfo:
         """Return the device info."""
         return {
             "identifiers": {(DOMAIN, str(self.coordinator.region))},
