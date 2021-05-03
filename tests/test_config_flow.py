@@ -36,7 +36,7 @@ async def test_duplicate_error(hass, bypass_get_data):
     entry.add_to_hass(hass)
 
     result = await hass.config_entries.flow.async_init(
-        DOMAIN, context={"source": SOURCE_USER}
+        DOMAIN, context={"source": SOURCE_USER}, data={CONF_REGION: "Pomorze"}
     )
 
     assert result["type"] == "abort"
