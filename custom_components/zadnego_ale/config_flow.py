@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 import asyncio
-from typing import Any
 
 from aiohttp.client_exceptions import ClientConnectorError
 import async_timeout
