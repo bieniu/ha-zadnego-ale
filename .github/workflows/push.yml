@@ -37,4 +37,4 @@ jobs:
         mypy custom_components/zadnego_ale
     - name: Test with pytest
       run: |
-        pytest tests --cov=custom_components/zadnego_ale --cov-report term-missing --disable-pytest-warnings
+        pytest tests
