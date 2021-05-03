@@ -13,17 +13,13 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 from . import ZadnegoAleDataUpdateCoordinator
 from .const import ATTRIBUTION, DOMAIN, REGIONS, SENSORS
 
-# Home Assistant 2021.6 required
-# from homeassistant.helpers.entity import DeviceInfo
-# from homeassistant.helpers.entity_platform import AddEntitiesCallback
-
 PARALLEL_UPDATES = 1
 
 
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: ConfigEntry,
-    async_add_entities: Callable,  # Use AddEntitiesCallback type with Home Assistant 2021.6
+    async_add_entities: Callable,
 ) -> None:
     """Add a Zadnego Ale entities from a config_entry."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
@@ -79,7 +75,7 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     @property
     def device_info(
         self,
-    ) -> dict[str, Any]:  # Use DeviceInfo type with Home Assistant 2021.6
+    ) -> dict[str, Any]:
         """Return the device info."""
         return {
             "identifiers": {(DOMAIN, str(self.coordinator.region))},
