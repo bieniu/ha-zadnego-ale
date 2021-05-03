@@ -10,7 +10,6 @@ import voluptuous as vol
 from zadnegoale import ApiError, ZadnegoAle
 
 from homeassistant import config_entries
-from homeassistant.data_entry_flow import FlowResultDict
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
 from homeassistant.helpers.typing import ConfigType
 
