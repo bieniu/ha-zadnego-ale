@@ -10,8 +10,8 @@ import voluptuous as vol
 from zadnegoale import ApiError, ZadnegoAle
 
 from homeassistant import config_entries
+from homeassistant.data_entry_flow import FlowResult
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
-from homeassistant.helpers.typing import ConfigType
 
 from .const import CONF_REGION, DOMAIN, REGIONS  # pylint:disable=unused-import
 
@@ -23,15 +23,17 @@ class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):  # type: 
     CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
 
     async def async_step_user(
-        self, user_input: ConfigType | None = None
-    ) -> dict[str, Any]:
+        self, user_input: dict[str, Any] | None = None
+    ) -> FlowResult:
         """Handle a flow initialized by the user."""
         errors = {}
 
         websession = async_get_clientsession(self.hass)
 
         if user_input is not None:
-            await self.async_set_unique_id(REGIONS.index(user_input[CONF_REGION]) + 1)
+            await self.async_set_unique_id(
+                str(REGIONS.index(user_input[CONF_REGION]) + 1)
+            )
             self._abort_if_unique_id_configured()
 
             try:

@@ -7,12 +7,15 @@ from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity import Entity
 from homeassistant.helpers.typing import StateType
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import ZadnegoAleDataUpdateCoordinator
 from .const import ATTRIBUTION, DOMAIN, REGIONS, SENSORS
+
+# Home Assistant 2021.6 required
+# from homeassistant.helpers.entity import DeviceInfo
+# from homeassistant.helpers.entity_platform import AddEntitiesCallback
 
 PARALLEL_UPDATES = 1
 
@@ -20,7 +23,7 @@ PARALLEL_UPDATES = 1
 async def async_setup_entry(
     hass: HomeAssistant,
     entry: ConfigEntry,
-    async_add_entities: Callable[[list[Entity], bool], None],
+    async_add_entities: Callable,  # Use AddEntitiesCallback type with Home Assistant 2021.6
 ) -> None:
     """Add a Zadnego Ale entities from a config_entry."""
     coordinator = hass.data[DOMAIN][entry.entry_id]
@@ -34,6 +37,8 @@ async def async_setup_entry(
 
 class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     """Define an Zadnego Ale sensor."""
+
+    coordinator: ZadnegoAleDataUpdateCoordinator
 
     def __init__(
         self, coordinator: ZadnegoAleDataUpdateCoordinator, sensor_type: str
@@ -72,10 +77,12 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         return f"{self.coordinator.region}-{self.sensor_type}"
 
     @property
-    def device_info(self) -> dict[str, Any]:
+    def device_info(
+        self,
+    ) -> dict[str, Any]:  # Use DeviceInfo type with Home Assistant 2021.6
         """Return the device info."""
         return {
-            "identifiers": {(DOMAIN, self.coordinator.region)},
+            "identifiers": {(DOMAIN, str(self.coordinator.region))},
             "name": REGIONS[self.coordinator.region - 1],
             "manufacturer": "Żadnego Ale",
             "entry_type": "service",
