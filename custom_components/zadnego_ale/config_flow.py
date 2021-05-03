@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import asyncio
+from typing import Any
 
 from aiohttp.client_exceptions import ClientConnectorError
 import async_timeout
@@ -24,7 +25,7 @@ class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):  # type: 
 
     async def async_step_user(
         self, user_input: ConfigType | None = None
-    ) -> FlowResultDict:
+    ) -> dict[str, Any]:
         """Handle a flow initialized by the user."""
         errors = {}
 
