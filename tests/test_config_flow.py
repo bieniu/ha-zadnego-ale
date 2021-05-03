@@ -28,7 +28,6 @@ async def test_create_entry(hass, bypass_get_data):
         assert result["type"] == RESULT_TYPE_CREATE_ENTRY
         assert result["title"] == "Pomorze"
         assert result["data"][CONF_REGION] == 2
-        assert result["unique_id"] == "2"
 
 
 async def test_duplicate_error(hass, bypass_get_data):
