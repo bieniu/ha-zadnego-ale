@@ -31,6 +31,7 @@ SENSORS: Final[dict[str, str]] = {
     "ambrozja": "mdi:sprout",
     "babka": "mdi:sprout",
     "brzoza": "mdi:tree",
+    "buk": "mdi:tree",
     "bylica": "mdi:sprout",
     "cis": "mdi:tree",
     "cladosporium": "mdi:mushroom-outline",
