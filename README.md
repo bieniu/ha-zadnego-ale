@@ -21,6 +21,7 @@ To configure integration in Home Assistant, go to **Configuration** >> **Integra
 [releases-shield]: https://img.shields.io/github/release/bieniu/ha-zadnego-ale.svg?style=popout
 [downloads-total-shield]: https://img.shields.io/github/downloads/bieniu/ha-zadnego-ale/total
 [buy-me-a-coffee-shield]: https://img.shields.io/static/v1.svg?label=%20&message=Buy%20me%20a%20coffee&color=6f4e37&logo=buy%20me%20a%20coffee&logoColor=white
+[hacs-shield]: https://img.shields.io/badge/HACS-Default-orange.svg
 [hacs]: https://hacs.xyz/docs/default_repositories
 [buy-me-a-coffee]: https://www.buymeacoffee.com/QnLdxeaqO
 [paypal-me-shield]: https://img.shields.io/static/v1.svg?label=%20&message=PayPal.Me&logo=paypal
