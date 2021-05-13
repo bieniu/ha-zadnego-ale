@@ -8,7 +8,7 @@
 
 The integration collects allergen concentration data from [Żadnego Ale](http://zadnegoale.pl) for Poland and presents it as sensors in the Home Assistant.
 
-You can install this integration manually or add this repository as custom to [HACS](https://hacs.xyz).
+You can install this integration manually or via [HACS](https://hacs.xyz).
 
 To configure integration in Home Assistant, go to **Configuration** >> **Integrations** >> **Add integration** >> **Żadnego Ale** or use My Home Assistant link.
 
