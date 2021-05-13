@@ -3,6 +3,7 @@
 [![Validate with hassfest](https://github.com/bieniu/ha-zadnego-ale/actions/workflows/hassfest.yml/badge.svg)](https://github.com/bieniu/ha-zadnego-ale/actions/workflows/hassfest.yml)
 [![GitHub Release][releases-shield]][releases]
 [![GitHub All Releases][downloads-total-shield]][releases]
+[![hacs_badge][hacs-shield]][hacs]
 [![Buy me a coffee][buy-me-a-coffee-shield]][buy-me-a-coffee]
 [![PayPal_Me][paypal-me-shield]][paypal-me]
 
@@ -20,6 +21,7 @@ To configure integration in Home Assistant, go to **Configuration** >> **Integra
 [releases-shield]: https://img.shields.io/github/release/bieniu/ha-zadnego-ale.svg?style=popout
 [downloads-total-shield]: https://img.shields.io/github/downloads/bieniu/ha-zadnego-ale/total
 [buy-me-a-coffee-shield]: https://img.shields.io/static/v1.svg?label=%20&message=Buy%20me%20a%20coffee&color=6f4e37&logo=buy%20me%20a%20coffee&logoColor=white
+[hacs]: https://hacs.xyz/docs/default_repositories
 [buy-me-a-coffee]: https://www.buymeacoffee.com/QnLdxeaqO
 [paypal-me-shield]: https://img.shields.io/static/v1.svg?label=%20&message=PayPal.Me&logo=paypal
 [paypal-me]: https://www.paypal.me/bieniu79
