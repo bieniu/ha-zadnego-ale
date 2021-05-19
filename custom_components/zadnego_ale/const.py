@@ -44,6 +44,7 @@ SENSORS: Final[dict[str, str]] = {
     "olsza": "mdi:tree",
     "platan": "mdi:tree",
     "pokrzywa": "mdi:sprout",
+    "sosna": "mdi:pine-tree",
     "szczaw": "mdi:sprout",
     "topola": "mdi:tree",
     "trawy": "mdi:grass",
