@@ -7,7 +7,6 @@ from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
 from homeassistant.core import HomeAssistant
-from homeassistant.helpers.typing import StateType
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import ZadnegoAleDataUpdateCoordinator
@@ -28,7 +27,7 @@ async def async_setup_entry(
     for sensor in SENSORS:
         sensors.append(ZadnegoAleSensor(coordinator, sensor))
 
-    async_add_entities(sensors, False)
+    async_add_entities(sensors)
 
 
 class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
