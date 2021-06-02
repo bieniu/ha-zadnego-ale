@@ -5,11 +5,7 @@ from pytest_homeassistant_custom_component.common import (
 )
 
 from custom_components.zadnego_ale.const import CONF_REGION, DOMAIN
-from homeassistant.config_entries import (
-    ENTRY_STATE_LOADED,
-    ENTRY_STATE_NOT_LOADED,
-    ENTRY_STATE_SETUP_RETRY,
-)
+from homeassistant.config_entries import ConfigEntryState
 
 
 async def test_config_entry_not_ready(hass, error_on_get_data):
@@ -18,7 +14,7 @@ async def test_config_entry_not_ready(hass, error_on_get_data):
     entry.add_to_hass(hass)
     await hass.config_entries.async_setup(entry.entry_id)
 
-    assert entry.state == ENTRY_STATE_SETUP_RETRY
+    assert entry.state == ConfigEntryState.SETUP_RETRY
 
 
 async def test_unload_entry(hass):
@@ -29,12 +25,12 @@ async def test_unload_entry(hass):
     await hass.async_block_till_done()
 
     assert len(hass.config_entries.async_entries(DOMAIN)) == 1
-    assert entry.state == ENTRY_STATE_LOADED
+    assert entry.state == ConfigEntryState.LOADED
 
     assert await hass.config_entries.async_unload(entry.entry_id)
     await hass.async_block_till_done()
 
-    assert entry.state == ENTRY_STATE_NOT_LOADED
+    assert entry.state == ConfigEntryState.NOT_LOADED
     assert not hass.data.get(DOMAIN)
 
 

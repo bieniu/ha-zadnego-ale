@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import logging
-from typing import cast
+from typing import Final, cast
 
 from aiohttp import ClientSession
 from aiohttp.client_exceptions import ClientConnectorError
@@ -19,7 +19,7 @@ from .const import CONF_REGION, DEFAULT_UPDATE_INTERVAL, DOMAIN
 
 _LOGGER = logging.getLogger(__name__)
 
-PLATFORMS = ["sensor"]
+PLATFORMS: Final[list[str]] = ["sensor"]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:

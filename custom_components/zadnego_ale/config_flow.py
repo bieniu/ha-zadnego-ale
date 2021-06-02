@@ -20,7 +20,6 @@ class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):  # type: 
     """Config flow for Zadnego Ale."""
 
     VERSION = 1
-    CONNECTION_CLASS = config_entries.CONN_CLASS_CLOUD_POLL
 
     async def async_step_user(
         self, user_input: dict[str, Any] | None = None

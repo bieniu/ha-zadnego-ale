@@ -6,6 +6,6 @@
   "codeowners": ["@bieniu"],
   "requirements": ["zadnegoale==0.3.0"],
   "config_flow": true,
-  "version": "0.3.1",
+  "version": "0.3.3",
   "iot_class": "cloud_polling"
 }

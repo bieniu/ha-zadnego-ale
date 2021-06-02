@@ -26,3 +26,8 @@ def error_get_data_fixture():
         side_effect=ApiError("exception"),
     ):
         yield
+
+
+@pytest.fixture(autouse=True)
+def auto_enable_custom_integrations(enable_custom_integrations):
+    yield
