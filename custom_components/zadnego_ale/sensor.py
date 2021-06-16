@@ -42,13 +42,11 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     ) -> None:
         """Initialize."""
         super().__init__(coordinator)
-        self.sensor_type = sensor_type
+        self._attr_icon = SENSORS[sensor_type]
+        self._attr_name = f"Stężenie {sensor_type.title()}"
+        self._attr_unique_id = f"{coordinator.region}-{sensor_type}"
         self._attrs = {ATTR_ATTRIBUTION: ATTRIBUTION}
-
-    @property
-    def name(self) -> str:
-        """Return the name."""
-        return f"Stężenie {self.sensor_type.title()}"
+        self.sensor_type = sensor_type
 
     @property
     def state(self) -> str:
@@ -65,16 +63,6 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
                 self.coordinator.data, self.sensor_type, {}
             ).get(attr)
         return self._attrs
-
-    @property
-    def icon(self) -> str:
-        """Return the icon."""
-        return SENSORS[self.sensor_type]
-
-    @property
-    def unique_id(self) -> str:
-        """Return a unique_id for this entity."""
-        return f"{self.coordinator.region}-{self.sensor_type}"
 
     @property
     def device_info(
