@@ -69,4 +69,3 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
                 self.coordinator.data, self.sensor_type, {}
             ).get(attr)
         return self._attrs
-
