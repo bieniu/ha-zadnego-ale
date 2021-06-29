@@ -6,7 +6,7 @@ from typing import Any, cast
 from homeassistant.components.sensor import SensorEntity
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
-from homeassistant.core import HomeAssistant
+from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -51,20 +51,22 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         self._attr_name = f"Stężenie {sensor_type.title()}"
         self._attr_unique_id = f"{coordinator.region}-{sensor_type}"
         self._attrs = {ATTR_ATTRIBUTION: ATTRIBUTION}
-        self.sensor_type = sensor_type
+        self._sensor_data = getattr(coordinator.data, sensor_type)
+        self._sensor_type = sensor_type
 
     @property
     def state(self) -> str:
-        return cast(
-            str,
-            getattr(self.coordinator.data, self.sensor_type, {}).get("level", "brak"),
-        )
+        return cast(str, getattr(self._sensor_data, "level", "brak"))
 
     @property
     def extra_state_attributes(self) -> dict[str, Any]:
         """Return the state attributes."""
         for attr in ["trend", "value"]:
-            self._attrs[attr] = getattr(
-                self.coordinator.data, self.sensor_type, {}
-            ).get(attr)
+            self._attrs[attr] = getattr(self._sensor_data, attr, None)
         return self._attrs
+
+    @callback
+    def _handle_coordinator_update(self) -> None:
+        """Handle updated data from the coordinator."""
+        self._sensor_data = getattr(self.coordinator.data, self._sensor_type)
+        self.async_write_ha_state()

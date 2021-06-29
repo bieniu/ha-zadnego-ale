@@ -40,7 +40,7 @@ class ZadnegoAleFlowHandler(config_entries.ConfigFlow, domain=DOMAIN):  # type: 
                     websession, REGIONS.index(user_input[CONF_REGION]) + 1
                 )
                 with async_timeout.timeout(10):
-                    await zadnegoale.async_update()
+                    await zadnegoale.async_get_dusts()
             except (ApiError, ClientConnectorError, asyncio.TimeoutError):
                 errors["base"] = "cannot_connect"
             else:
