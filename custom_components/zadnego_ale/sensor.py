@@ -42,6 +42,12 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     ) -> None:
         """Initialize."""
         super().__init__(coordinator)
+        self._attr_device_info = {
+            "identifiers": {(DOMAIN, str(self.coordinator.region))},
+            "name": REGIONS[self.coordinator.region - 1],
+            "manufacturer": "Żadnego Ale",
+            "entry_type": "service",
+        }
         self._attr_icon = SENSORS[sensor_type]
         self._attr_name = f"Stężenie {sensor_type.title()}"
         self._attr_unique_id = f"{coordinator.region}-{sensor_type}"
@@ -64,14 +70,3 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
             ).get(attr)
         return self._attrs
 
-    @property
-    def device_info(
-        self,
-    ) -> DeviceInfo:
-        """Return the device info."""
-        return {
-            "identifiers": {(DOMAIN, str(self.coordinator.region))},
-            "name": REGIONS[self.coordinator.region - 1],
-            "manufacturer": "Żadnego Ale",
-            "entry_type": "service",
-        }
