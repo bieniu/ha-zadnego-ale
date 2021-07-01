@@ -14,10 +14,10 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import ZadnegoAleDataUpdateCoordinator
 from .const import (
-    ATTRIBUTION,
     ATTR_LABEL,
     ATTR_TREND,
     ATTR_VALUE,
+    ATTRIBUTION,
     DOMAIN,
     REGIONS,
     SENSORS,
