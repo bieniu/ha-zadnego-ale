@@ -14,9 +14,10 @@ from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import ZadnegoAleDataUpdateCoordinator
 from .const import (
-    ATTR_LABEL,
-    ATTR_LEVEL,
     ATTRIBUTION,
+    ATTR_LABEL,
+    ATTR_TREND,
+    ATTR_VALUE,
     DOMAIN,
     REGIONS,
     SENSORS,
@@ -84,13 +85,13 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
 
     @property
     def state(self) -> str:
-        return cast(str, getattr(self._sensor_data, ATTR_LEVEL))
+        return cast(str, self._sensor_data.level)
 
     @property
     def extra_state_attributes(self) -> dict[str, Any]:
         """Return the state attributes."""
-        for attr in ["trend", "value"]:
-            self._attrs[attr] = getattr(self._sensor_data, attr)
+        self._attrs[ATTR_TREND] = self._sensor_data.trend
+        self._attrs[ATTR_VALUE] = self._sensor_data.value
         return self._attrs
 
     @callback

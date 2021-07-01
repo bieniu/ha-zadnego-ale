@@ -14,6 +14,8 @@ ATTRIBUTION: Final = (
 
 ATTR_LABEL: Final = "label"
 ATTR_LEVEL: Final = "level"
+ATTR_TREND: Final = "trend"
+ATTR_VALUE: Final = "value"
 
 CONF_REGION: Final = "region"
 
