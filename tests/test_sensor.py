@@ -14,86 +14,92 @@ async def test_sensor(hass, bypass_get_data):
     await hass.config_entries.async_setup(entry.entry_id)
     await hass.async_block_till_done()
 
-    state = hass.states.get("sensor.stezenie_cladosporium")
+    state = hass.states.get("sensor.cladosporium_pollen_concentration")
 
     assert state
-    assert state.state == "bardzo niskie"
+    assert state.state == "very low"
     assert state.attributes.get("attribution") == ATTRIBUTION
-    assert state.attributes.get("trend") == "bez zmian"
+    assert state.attributes.get("trend") == "steady"
     assert state.attributes.get("value") == 5
     assert state.attributes.get("icon") == "mdi:mushroom-outline"
+    assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.stezenie_cladosporium")
+    entry = registry.async_get("sensor.cladosporium_pollen_concentration")
 
     assert entry
     assert entry.unique_id == "2-cladosporium"
 
-    state = hass.states.get("sensor.stezenie_cis")
+    state = hass.states.get("sensor.yew_pollen_concentration")
 
     assert state
-    assert state.state == "brak"
+    assert state.state == "lack"
     assert state.attributes.get("attribution") == ATTRIBUTION
-    assert state.attributes.get("trend") == "wzrost"
+    assert state.attributes.get("trend") == "rising"
     assert state.attributes.get("value") == 1
     assert state.attributes.get("icon") == "mdi:tree"
+    assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.stezenie_cis")
+    entry = registry.async_get("sensor.yew_pollen_concentration")
 
     assert entry
-    assert entry.unique_id == "2-cis"
+    assert entry.unique_id == "2-yew"
 
-    state = hass.states.get("sensor.stezenie_trawy")
+    state = hass.states.get("sensor.grass_pollen_concentration")
 
     assert state
-    assert state.state == "brak"
+    assert state.state == "lack"
     assert state.attributes.get("attribution") == ATTRIBUTION
     assert state.attributes.get("trend") is None
-    assert state.attributes.get("value") is None
+    assert state.attributes.get("value") == 0
     assert state.attributes.get("icon") == "mdi:grass"
+    assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.stezenie_trawy")
+    entry = registry.async_get("sensor.grass_pollen_concentration")
 
     assert entry
-    assert entry.unique_id == "2-trawy"
+    assert entry.unique_id == "2-grass"
 
-    state = hass.states.get("sensor.stezenie_platan")
+    state = hass.states.get("sensor.plane_tree_pollen_concentration")
 
     assert state
-    assert state.state == "brak"
+    assert state.state == "lack"
     assert state.attributes.get("attribution") == ATTRIBUTION
-    assert state.attributes.get("trend") == "wzrost"
+    assert state.attributes.get("trend") == "rising"
     assert state.attributes.get("value") == 1
     assert state.attributes.get("icon") == "mdi:tree"
+    assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.stezenie_platan")
+    entry = registry.async_get("sensor.plane_tree_pollen_concentration")
 
     assert entry
-    assert entry.unique_id == "2-platan"
+    assert entry.unique_id == "2-plane_tree"
 
-    state = hass.states.get("sensor.stezenie_klon")
+    state = hass.states.get("sensor.maple_pollen_concentration")
 
     assert state
-    assert state.state == "bardzo niskie"
+    assert state.state == "very low"
     assert state.attributes.get("attribution") == ATTRIBUTION
-    assert state.attributes.get("trend") == "bez zmian"
+    assert state.attributes.get("trend") == "steady"
     assert state.attributes.get("value") == 5
     assert state.attributes.get("icon") == "mdi:tree"
+    assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.stezenie_klon")
+    entry = registry.async_get("sensor.maple_pollen_concentration")
 
     assert entry
-    assert entry.unique_id == "2-klon"
+    assert entry.unique_id == "2-maple"
 
-    state = hass.states.get("sensor.stezenie_grab")
+    state = hass.states.get("sensor.hornbeam_pollen_concentration")
 
     assert state
-    assert state.state == "średnie"
+    assert state.state == "medium"
     assert state.attributes.get("attribution") == ATTRIBUTION
-    assert state.attributes.get("trend") == "wzrost"
+    assert state.attributes.get("trend") == "rising"
     assert state.attributes.get("value") == 20
     assert state.attributes.get("icon") == "mdi:tree"
+    assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.stezenie_grab")
+    entry = registry.async_get("sensor.hornbeam_pollen_concentration")
 
     assert entry
-    assert entry.unique_id == "2-grab"
+    assert entry.unique_id == "2-hornbeam"
