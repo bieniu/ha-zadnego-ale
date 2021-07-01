@@ -69,8 +69,8 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         """Initialize."""
         super().__init__(coordinator)
         self._attr_device_info = {
-            "identifiers": {(DOMAIN, str(self.coordinator.region))},
-            "name": REGIONS[self.coordinator.region - 1],
+            "identifiers": {(DOMAIN, str(coordinator.region))},
+            "name": REGIONS[coordinator.region - 1],
             "manufacturer": "Żadnego Ale",
             "entry_type": "service",
         }
