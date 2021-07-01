@@ -1,0 +1,12 @@
+{
+    "state": {
+        "zadnego_ale__concentration": {
+            "high": "wysokie",
+            "lack": "brak",
+            "low": "niskie",
+            "medium": "średnie",
+            "very high": "bardzo wysokie",
+            "very low": "bardzo niskie"
+        }
+    }
+}
