@@ -2,7 +2,7 @@
 from __future__ import annotations
 
 import logging
-from typing import Any
+from typing import Any, cast
 
 from homeassistant.components.sensor import (
     DOMAIN as PLATFORM,
@@ -14,6 +14,7 @@ from homeassistant.const import ATTR_ATTRIBUTION
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import entity_registry
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.typing import StateType
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import ZadnegoAleDataUpdateCoordinator
@@ -73,6 +74,7 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     ) -> None:
         """Initialize."""
         super().__init__(coordinator)
+
         self._attr_device_info = {
             "identifiers": {(DOMAIN, str(coordinator.region))},
             "name": REGIONS[coordinator.region - 1],
@@ -82,19 +84,23 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         self._attr_unique_id = f"{coordinator.region}-{description.key}"
         self._attrs = {ATTR_ATTRIBUTION: ATTRIBUTION}
         self._sensor_data = getattr(coordinator.data, description.key)
-        self._attr_native_value = self._sensor_data.level
         self.entity_description = description
+
+    @property
+    def native_value(self) -> StateType:
+        """Return the state."""
+        return cast(StateType, self._sensor_data.level)
 
     @property
     def extra_state_attributes(self) -> dict[str, Any]:
         """Return the state attributes."""
-        self._attrs[ATTR_TREND] = self._sensor_data.trend
-        self._attrs[ATTR_VALUE] = self._sensor_data.value
+        for item in (ATTR_TREND, ATTR_VALUE):
+            self._attrs[item] = getattr(self._sensor_data, item)
+
         return self._attrs
 
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
         self._sensor_data = getattr(self.coordinator.data, self.entity_description.key)
-        self._attr_native_value = self._sensor_data.level
         self.async_write_ha_state()
