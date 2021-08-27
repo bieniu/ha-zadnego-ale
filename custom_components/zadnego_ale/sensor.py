@@ -4,7 +4,11 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from homeassistant.components.sensor import DOMAIN as PLATFORM, SensorEntity, SensorEntityDescription
+from homeassistant.components.sensor import (
+    DOMAIN as PLATFORM,
+    SensorEntity,
+    SensorEntityDescription,
+)
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import ATTR_ATTRIBUTION
 from homeassistant.core import HomeAssistant, callback
@@ -63,7 +67,9 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     coordinator: ZadnegoAleDataUpdateCoordinator
 
     def __init__(
-        self, coordinator: ZadnegoAleDataUpdateCoordinator, description: SensorEntityDescription
+        self,
+        coordinator: ZadnegoAleDataUpdateCoordinator,
+        description: SensorEntityDescription,
     ) -> None:
         """Initialize."""
         super().__init__(coordinator)
@@ -89,6 +95,6 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
-        self._sensor_data = getattr(self.coordinator.data, self._sensor_type)
+        self._sensor_data = getattr(self.coordinator.data, self.entity_description.key)
         self._attr_native_value = self._sensor_data.level
         self.async_write_ha_state()
