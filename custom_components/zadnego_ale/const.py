@@ -32,7 +32,7 @@ REGIONS: Final[tuple[str, ...]] = (
     "Karpaty",
 )
 
-SENSORS: Final[tuple[SensorEntityDescription]] = (
+SENSORS: Final[tuple[SensorEntityDescription, ...]] = (
     SensorEntityDescription(
         key="alder",
         device_class="zadnego_ale__concentration",
