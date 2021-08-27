@@ -1,0 +1,12 @@
+{
+    "state": {
+        "zadnego_ale__concentration": {
+            "high": "High",
+            "lack": "Lack",
+            "low": "Low",
+            "medium": "Medium",
+            "very high": "Very High",
+            "very low": "Very Low"
+        }
+    }
+}

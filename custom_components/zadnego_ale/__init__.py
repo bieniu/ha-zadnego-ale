@@ -7,7 +7,7 @@ from typing import Final
 from aiohttp import ClientSession
 from aiohttp.client_exceptions import ClientConnectorError
 import async_timeout
-from zadnegoale import ApiError, DictToObj, ZadnegoAle
+from zadnegoale import Allergens, ApiError, ZadnegoAle
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -75,12 +75,10 @@ class ZadnegoAleDataUpdateCoordinator(DataUpdateCoordinator):
             hass, _LOGGER, name=DOMAIN, update_interval=DEFAULT_UPDATE_INTERVAL
         )
 
-    async def _async_update_data(self) -> DictToObj:
+    async def _async_update_data(self) -> Allergens:
         """Update data via library."""
         try:
             with async_timeout.timeout(10):
-                data = await self.zadnegoale.async_update()
+                return await self.zadnegoale.async_get_dusts()
         except (ApiError, ClientConnectorError) as error:
             raise UpdateFailed(error) from error
-
-        return data.sensors
