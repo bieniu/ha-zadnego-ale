@@ -4,7 +4,7 @@
   "documentation": "https://github.com/bieniu/ha-zadnego-ale",
   "issue_tracker": "https://github.com/bieniu/ha-zadnego-ale/issues",
   "codeowners": ["@bieniu"],
-  "requirements": ["zadnegoale==0.5.0"],
+  "requirements": ["zadnegoale==0.5.1"],
   "config_flow": true,
   "version": "0.5.0",
   "iot_class": "cloud_polling"

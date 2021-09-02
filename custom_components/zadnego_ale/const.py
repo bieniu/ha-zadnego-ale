@@ -76,6 +76,12 @@ SENSORS: Final[tuple[SensorEntityDescription, ...]] = (
         name="Elm Pollen Concentration",
     ),
     SensorEntityDescription(
+        key="goldenrod",
+        device_class="zadnego_ale__concentration",
+        icon="mdi:grass",
+        name="Goldenrod Pollen Concentration",
+    ),
+    SensorEntityDescription(
         key="grass",
         device_class="zadnego_ale__concentration",
         icon="mdi:grass",
