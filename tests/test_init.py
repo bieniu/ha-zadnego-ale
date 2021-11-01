@@ -17,7 +17,7 @@ async def test_config_entry_not_ready(hass, error_on_get_data):
     assert entry.state == ConfigEntryState.SETUP_RETRY
 
 
-async def test_unload_entry(hass):
+async def test_unload_entry(hass, bypass_get_data):
     """Test successful unload of entry."""
     entry = MockConfigEntry(domain=DOMAIN, data={CONF_REGION: 2})
     entry.add_to_hass(hass)
