@@ -4,7 +4,7 @@ from __future__ import annotations
 import logging
 from typing import Any
 
-from zadnegoale import Allergen
+from zadnegoale.model import Allergen
 
 from homeassistant.components.sensor import (
     DOMAIN as PLATFORM,
@@ -86,7 +86,7 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         self._attr_unique_id = f"{coordinator.region}-{description.key}"
         sensor_data = getattr(coordinator.data, description.key)
         self._attr_native_value = sensor_data.level
-        self._attr_extra_state_attributes = self._extract_attributes(sensor_data)
+        self._attr_extra_state_attributes = _extract_attributes(sensor_data)
         self.entity_description = description
 
     @callback
@@ -94,10 +94,10 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         """Handle updated data from the coordinator."""
         sensor_data = getattr(self.coordinator.data, self.entity_description.key)
         self._attr_native_value = sensor_data.level
-        self._attr_extra_state_attributes = self._extract_attributes(sensor_data)
+        self._attr_extra_state_attributes = _extract_attributes(sensor_data)
         self.async_write_ha_state()
 
-    @callback
-    def _extract_attributes(self, sensor_data: Allergen) -> dict[str, Any]:
-        """Extract attributes from sensor data."""
-        return {item: getattr(sensor_data, item) for item in (ATTR_TREND, ATTR_VALUE)}
+@callback
+def _extract_attributes(sensor_data: Allergen) -> dict[str, Any]:
+    """Extract attributes from sensor data."""
+    return {item: getattr(sensor_data, item) for item in (ATTR_TREND, ATTR_VALUE)}
