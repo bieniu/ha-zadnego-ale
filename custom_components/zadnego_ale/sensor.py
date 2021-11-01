@@ -4,6 +4,8 @@ from __future__ import annotations
 import logging
 from typing import Any
 
+from zadnegoale import Allergen
+
 from homeassistant.components.sensor import (
     DOMAIN as PLATFORM,
     SensorEntity,
@@ -12,9 +14,9 @@ from homeassistant.components.sensor import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import entity_registry
+from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
-from homeassistant.helpers.entity import DeviceInfo
 
 from . import ZadnegoAleDataUpdateCoordinator
 from .const import (
@@ -96,6 +98,6 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         self.async_write_ha_state()
 
     @callback
-    def _extract_attributes(self, sensor_data) -> dict[str, Any]:
+    def _extract_attributes(self, sensor_data: Allergen) -> dict[str, Any]:
         """Extract attributes from sensor data."""
         return {item: getattr(sensor_data, item) for item in (ATTR_TREND, ATTR_VALUE)}
