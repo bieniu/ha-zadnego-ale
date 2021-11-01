@@ -97,6 +97,7 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         self._attr_extra_state_attributes = _extract_attributes(sensor_data)
         self.async_write_ha_state()
 
+
 @callback
 def _extract_attributes(sensor_data: Allergen) -> dict[str, Any]:
     """Extract attributes from sensor data."""
