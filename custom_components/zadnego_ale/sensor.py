@@ -2,7 +2,9 @@
 from __future__ import annotations
 
 import logging
-from typing import Any, cast
+from typing import Any
+
+from zadnegoale.model import Allergen
 
 from homeassistant.components.sensor import (
     DOMAIN as PLATFORM,
@@ -10,11 +12,10 @@ from homeassistant.components.sensor import (
     SensorEntityDescription,
 )
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import ATTR_ATTRIBUTION
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import entity_registry
+from homeassistant.helpers.entity import DeviceInfo
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.typing import StateType
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
 from . import ZadnegoAleDataUpdateCoordinator
@@ -65,6 +66,7 @@ async def async_setup_entry(
 class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     """Define an Zadnego Ale sensor."""
 
+    _attr_attribution = ATTRIBUTION
     coordinator: ZadnegoAleDataUpdateCoordinator
 
     def __init__(
@@ -75,32 +77,28 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
         """Initialize."""
         super().__init__(coordinator)
 
-        self._attr_device_info = {
-            "identifiers": {(DOMAIN, str(coordinator.region))},
-            "name": REGIONS[coordinator.region - 1],
-            "manufacturer": "Żadnego Ale",
-            "entry_type": "service",
-        }
+        self._attr_device_info = DeviceInfo(
+            identifiers={(DOMAIN, str(coordinator.region))},
+            name=REGIONS[coordinator.region - 1],
+            manufacturer="Żadnego Ale",
+            entry_type="service",
+        )
         self._attr_unique_id = f"{coordinator.region}-{description.key}"
-        self._attrs = {ATTR_ATTRIBUTION: ATTRIBUTION}
-        self._sensor_data = getattr(coordinator.data, description.key)
+        sensor_data = getattr(coordinator.data, description.key)
+        self._attr_native_value = sensor_data.level
+        self._attr_extra_state_attributes = _extract_attributes(sensor_data)
         self.entity_description = description
-
-    @property
-    def native_value(self) -> StateType:
-        """Return the state."""
-        return cast(StateType, self._sensor_data.level)
-
-    @property
-    def extra_state_attributes(self) -> dict[str, Any]:
-        """Return the state attributes."""
-        for item in (ATTR_TREND, ATTR_VALUE):
-            self._attrs[item] = getattr(self._sensor_data, item)
-
-        return self._attrs
 
     @callback
     def _handle_coordinator_update(self) -> None:
         """Handle updated data from the coordinator."""
-        self._sensor_data = getattr(self.coordinator.data, self.entity_description.key)
+        sensor_data = getattr(self.coordinator.data, self.entity_description.key)
+        self._attr_native_value = sensor_data.level
+        self._attr_extra_state_attributes = _extract_attributes(sensor_data)
         self.async_write_ha_state()
+
+
+@callback
+def _extract_attributes(sensor_data: Allergen) -> dict[str, Any]:
+    """Extract attributes from sensor data."""
+    return {item: getattr(sensor_data, item) for item in (ATTR_TREND, ATTR_VALUE)}
