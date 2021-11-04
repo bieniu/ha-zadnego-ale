@@ -1,12 +1,12 @@
 aiohttp_cors==0.7.0
 black==21.10b0
-coverage==6.0.2
+coverage>=6.0.2
 flake8==4.0.1
 homeassistant>=2021.11.0b0
 isort==5.9.3
 mypy==0.910
 pylint==2.11.1
-pytest-cov==2.12.1
+pytest-cov>=2.12.1
 pytest-homeassistant-custom-component==0.4.6
 pytest==6.2.5
 zadnegoale==0.6.0
