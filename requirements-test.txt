@@ -7,6 +7,6 @@ isort==5.10.1
 mypy==0.910
 pylint==2.11.1
 pytest-cov>=2.12.1
-pytest-homeassistant-custom-component==0.4.8
+pytest-homeassistant-custom-component==0.4.10
 pytest==6.2.5
 zadnegoale==0.6.1
