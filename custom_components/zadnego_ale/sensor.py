@@ -14,7 +14,7 @@ from homeassistant.components.sensor import (
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.helpers import entity_registry
-from homeassistant.helpers.entity import DeviceInfo
+from homeassistant.helpers.entity import DeviceInfo, DeviceEntryType
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.update_coordinator import CoordinatorEntity
 
@@ -81,7 +81,7 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
             identifiers={(DOMAIN, str(coordinator.region))},
             name=REGIONS[coordinator.region - 1],
             manufacturer="Żadnego Ale",
-            entry_type="service",
+            entry_type=DeviceEntryType.SERVICE,
         )
         self._attr_unique_id = f"{coordinator.region}-{description.key}"
         sensor_data = getattr(coordinator.data, description.key)
