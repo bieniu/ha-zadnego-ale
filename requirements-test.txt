@@ -5,6 +5,7 @@ flake8==4.0.1
 homeassistant>=2021.11.0b0
 isort==5.10.1
 mypy==0.910
+pre-commit==2.16.0
 pylint==2.12.2
 pytest-cov>=2.12.1
 pytest-homeassistant-custom-component==0.4.12
