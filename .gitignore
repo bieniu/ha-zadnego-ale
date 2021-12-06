@@ -137,3 +137,6 @@ dmypy.json
 .storage
 .vscode
 .HA_VERSION
+
+# pre-commit
+!.pre-commit-config.yaml
