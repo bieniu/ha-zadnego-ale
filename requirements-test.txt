@@ -1,5 +1,5 @@
 aiohttp_cors==0.7.0
-black==21.12b0
+black==22.1.0
 coverage>=6.0.2
 flake8==4.0.1
 homeassistant>=2021.11.0b0
