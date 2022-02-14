@@ -9,5 +9,5 @@ pre-commit==2.17.0
 pylint==2.12.2
 pytest-cov>=2.12.1
 pytest-homeassistant-custom-component
-pytest==6.2.5
+pytest==7.0.1
 zadnegoale==0.6.1
