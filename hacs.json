@@ -1,6 +1,6 @@
 {
   "name": "Żadnego Ale",
-  "homeassistant": "2021.12.0",
+  "homeassistant": "2022.2.0",
   "iot_class": "Cloud Polling",
   "domains": ["sensor"],
   "zip_release": true,
