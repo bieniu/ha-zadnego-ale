@@ -1,0 +1,4 @@
+-r requirements-test.txt
+-r requirements-lint.txt
+pre-commit==2.19.0
+wheel==0.37.1
