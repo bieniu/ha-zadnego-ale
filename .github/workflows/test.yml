@@ -30,26 +30,10 @@ jobs:
         run: |
           pip install -r requirements-test.txt
 
-      - name: Check with isort
-        run: |
-          isort custom_components/zadnego_ale tests --check-only
-
-      - name: Check with Black Code Formatter
-        run: |
-          black custom_components/zadnego_ale tests --check
-
-      - name: Lint with flake8
-        run: |
-          flake8 custom_components/zadnego_ale tests
-
-      - name: Lint with pylint
-        run: |
-          pylint custom_components/zadnego_ale
-
-      - name: Test with mypy
-        run: |
-          mypy custom_components/zadnego_ale
-
       - name: Test with pytest
         run: |
           pytest tests
+
+      - name: Coverage
+        run: |
+          coverage report --fail-under=79
