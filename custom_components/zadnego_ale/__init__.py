@@ -11,8 +11,8 @@ from zadnegoale import Allergens, ApiError, ZadnegoAle
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
+from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers.aiohttp_client import async_get_clientsession
-from homeassistant.helpers.device_registry import async_get_registry
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 
 from .const import CONF_REGION, DEFAULT_UPDATE_INTERVAL, DOMAIN
@@ -31,7 +31,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         hass.config_entries.async_update_entry(entry, unique_id=str(region))
 
     # Migrate device_info identifiers from int to str
-    device_registry = await async_get_registry(hass)
+    device_registry = dr.async_get(hass)
     old_ids = (DOMAIN, region)
     device_entry = device_registry.async_get_device({old_ids})
     if device_entry and entry.entry_id in device_entry.config_entries:
