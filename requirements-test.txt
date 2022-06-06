@@ -9,7 +9,7 @@ homeassistant
 isort==5.10.1
 mypy==0.960
 pydocstyle==6.1.1
-pylint==2.13.9
+pylint==2.14.0
 pytest
 pytest-cov>=2.12.1
 pytest-homeassistant-custom-component==0.9.9
