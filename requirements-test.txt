@@ -1,6 +1,6 @@
 
 aiohttp_cors==0.7.0
-black==22.3.0
+black==22.6.0
 coverage
 coverage>=6.0.2
 flake8==4.0.1
