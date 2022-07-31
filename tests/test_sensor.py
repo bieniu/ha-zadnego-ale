@@ -23,7 +23,7 @@ async def test_sensor(hass, bypass_get_data):
     await hass.config_entries.async_setup(entry.entry_id)
     await hass.async_block_till_done()
 
-    state = hass.states.get("sensor.cladosporium_pollen_concentration")
+    state = hass.states.get("sensor.pomorze_cladosporium_pollen_concentration")
 
     assert state
     assert state.state == "very low"
@@ -33,12 +33,12 @@ async def test_sensor(hass, bypass_get_data):
     assert state.attributes.get("icon") == "mdi:mushroom-outline"
     assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.cladosporium_pollen_concentration")
+    entry = registry.async_get("sensor.pomorze_cladosporium_pollen_concentration")
 
     assert entry
     assert entry.unique_id == "2-cladosporium"
 
-    state = hass.states.get("sensor.yew_pollen_concentration")
+    state = hass.states.get("sensor.pomorze_yew_pollen_concentration")
 
     assert state
     assert state.state == "lack"
@@ -48,12 +48,12 @@ async def test_sensor(hass, bypass_get_data):
     assert state.attributes.get("icon") == "mdi:tree"
     assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.yew_pollen_concentration")
+    entry = registry.async_get("sensor.pomorze_yew_pollen_concentration")
 
     assert entry
     assert entry.unique_id == "2-yew"
 
-    state = hass.states.get("sensor.grass_pollen_concentration")
+    state = hass.states.get("sensor.pomorze_grass_pollen_concentration")
 
     assert state
     assert state.state == "lack"
@@ -63,12 +63,12 @@ async def test_sensor(hass, bypass_get_data):
     assert state.attributes.get("icon") == "mdi:grass"
     assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.grass_pollen_concentration")
+    entry = registry.async_get("sensor.pomorze_grass_pollen_concentration")
 
     assert entry
     assert entry.unique_id == "2-grass"
 
-    state = hass.states.get("sensor.plane_tree_pollen_concentration")
+    state = hass.states.get("sensor.pomorze_plane_tree_pollen_concentration")
 
     assert state
     assert state.state == "lack"
@@ -78,12 +78,12 @@ async def test_sensor(hass, bypass_get_data):
     assert state.attributes.get("icon") == "mdi:tree"
     assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.plane_tree_pollen_concentration")
+    entry = registry.async_get("sensor.pomorze_plane_tree_pollen_concentration")
 
     assert entry
     assert entry.unique_id == "2-plane_tree"
 
-    state = hass.states.get("sensor.maple_pollen_concentration")
+    state = hass.states.get("sensor.pomorze_maple_pollen_concentration")
 
     assert state
     assert state.state == "very low"
@@ -93,12 +93,12 @@ async def test_sensor(hass, bypass_get_data):
     assert state.attributes.get("icon") == "mdi:tree"
     assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.maple_pollen_concentration")
+    entry = registry.async_get("sensor.pomorze_maple_pollen_concentration")
 
     assert entry
     assert entry.unique_id == "2-maple"
 
-    state = hass.states.get("sensor.hornbeam_pollen_concentration")
+    state = hass.states.get("sensor.pomorze_hornbeam_pollen_concentration")
 
     assert state
     assert state.state == "medium"
@@ -108,7 +108,7 @@ async def test_sensor(hass, bypass_get_data):
     assert state.attributes.get("icon") == "mdi:tree"
     assert state.attributes.get("device_class") == "zadnego_ale__concentration"
 
-    entry = registry.async_get("sensor.hornbeam_pollen_concentration")
+    entry = registry.async_get("sensor.pomorze_hornbeam_pollen_concentration")
 
     assert entry
     assert entry.unique_id == "2-hornbeam"
@@ -121,7 +121,7 @@ async def test_state_update(hass, bypass_get_data):
     await hass.config_entries.async_setup(entry.entry_id)
     await hass.async_block_till_done()
 
-    state = hass.states.get("sensor.cladosporium_pollen_concentration")
+    state = hass.states.get("sensor.pomorze_cladosporium_pollen_concentration")
 
     assert state
     assert state.state == "very low"
@@ -137,6 +137,6 @@ async def test_state_update(hass, bypass_get_data):
         async_fire_time_changed(hass, future)
         await hass.async_block_till_done()
 
-        state = hass.states.get("sensor.cladosporium_pollen_concentration")
+        state = hass.states.get("sensor.pomorze_cladosporium_pollen_concentration")
         assert state
         assert state.state == "very high"
