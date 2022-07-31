@@ -67,6 +67,7 @@ class ZadnegoAleSensor(CoordinatorEntity, SensorEntity):
     """Define an Zadnego Ale sensor."""
 
     _attr_attribution = ATTRIBUTION
+    _attr_has_entity_name = True
     coordinator: ZadnegoAleDataUpdateCoordinator
 
     def __init__(
