@@ -40,7 +40,7 @@ repos:
       - id: bandit
         args:
           - --quiet
-        files: ^(custom_components/zadnego_ale|tests)/.+\.py$
+        files: ^(custom_components/zadnego_ale)/.+\.py$
   - repo: https://github.com/PyCQA/isort
     rev: 5.10.1
     hooks:
