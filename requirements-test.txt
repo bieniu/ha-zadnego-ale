@@ -10,5 +10,5 @@ pydocstyle==6.1.1
 pylint==2.14.5
 pytest==7.1.2
 pytest-cov==3.0.0
-pytest-homeassistant-custom-component==0.11.2
+pytest-homeassistant-custom-component==0.11.12
 zadnegoale==0.6.4
