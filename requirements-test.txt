@@ -11,4 +11,4 @@ pylint==2.15.8
 pytest
 pytest-cov
 pytest-homeassistant-custom-component==0.12.21
-zadnegoale==0.6.5
+zadnegoale==0.7.0
