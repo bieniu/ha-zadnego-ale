@@ -12,4 +12,4 @@ pytest
 pytest-asyncio
 pytest-cov
 pytest-homeassistant-custom-component==0.12.31
-zadnegoale==0.6.5
+zadnegoale==0.7.0
