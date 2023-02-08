@@ -13,3 +13,4 @@ pytest-cov
 pytest-homeassistant-custom-component==0.12.54
 pytest-tornasync
 zadnegoale==0.7.0
+cryptography>=39.0.1 # not directly required, pinned by Snyk to avoid a vulnerability
