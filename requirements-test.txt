@@ -10,6 +10,6 @@ pydocstyle==6.3.0
 pylint==2.16.1
 pytest
 pytest-cov
-pytest-homeassistant-custom-component==0.12.54
+pytest-homeassistant-custom-component==0.12.57
 pytest-tornasync
 zadnegoale==0.7.0
